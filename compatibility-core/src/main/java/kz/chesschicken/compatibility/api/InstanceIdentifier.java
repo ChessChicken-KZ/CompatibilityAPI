@@ -2,6 +2,8 @@ package kz.chesschicken.compatibility.api;
 
 import net.fabricmc.loader.api.ModContainer;
 
+import java.util.Objects;
+
 public class InstanceIdentifier {
     private final String mod;
     private final String object;
@@ -43,4 +45,16 @@ public class InstanceIdentifier {
         return new InstanceIdentifier(modContainer.getMetadata().getId(), s);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass())
+            return false;
+        InstanceIdentifier that = (InstanceIdentifier) o;
+        return mod.equals(that.mod) && object.equals(that.object);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mod, object);
+    }
 }

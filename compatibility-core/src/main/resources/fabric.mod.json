@@ -3,7 +3,7 @@
   "id": "compatibility",
   "version": "${version}",
 
-  "name": "Old Fabric Compatibility",
+  "name": "CompatibilityAPI (Core)",
   "description": "External API to handle some mods to work on every possible fabric API.",
   "authors": [
     "ChessChicken-KZ"
@@ -21,6 +21,9 @@
   "entrypoints": {
     "preLaunch": [
       "kz.chesschicken.compatibility.CompatibilityAPI"
+    ],
+    "main": [
+      "kz.chesschicken.compatibility.CompatibilityAPI"
     ]
   },
   "mixins": [
@@ -29,5 +32,9 @@
 
   "depends": {
     "minecraft": "1.0.0-beta.7.3"
+  },
+
+  "custom": {
+    "modmenu:api": true
   }
 }

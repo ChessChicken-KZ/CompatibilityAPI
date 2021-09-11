@@ -1,5 +1,7 @@
 package kz.chesschicken.compatibility;
 
+import kz.chesschicken.compatibility.api.AbstractAPIInterface;
+import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 import net.mine_diver.unsafeevents.Event;
@@ -11,7 +13,8 @@ import java.lang.reflect.Method;
 import java.util.function.Consumer;
 
 
-public class CompatibilityAPI implements PreLaunchEntrypoint {
+public class CompatibilityAPI implements PreLaunchEntrypoint, ModInitializer {
+    public static AbstractAPIInterface CURRENT_API;
     public static final Logger LOGGER = LogManager.getLogger("Compatibility");
     public static final EventBus EVENT_BUS = new EventBus();
 
@@ -29,5 +32,11 @@ public class CompatibilityAPI implements PreLaunchEntrypoint {
             else if (objectEntrypointContainer.getEntrypoint().getClass() == Method.class)
                 EVENT_BUS.register((Method) objectEntrypointContainer.getEntrypoint());
         });
+    }
+
+    @Override
+    public void onInitialize() {
+        if(CURRENT_API == null)
+            throw new NullPointerException("No API found! Please install StAPI nor CursedLegacyApi nor Beta-Essentials");
     }
 }
