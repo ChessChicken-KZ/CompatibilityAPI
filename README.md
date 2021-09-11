@@ -7,7 +7,7 @@ Currently supported features:
 | API                 | Blocks               | Items                | Recipes              | Textures             |
 |---------------------|----------------------|----------------------|----------------------|----------------------|
 | StationAPI          | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_large_square: |
-| Cursed-Legacy-API   | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: |
+| Cursed-Legacy-API   | :white_check_mark:   | :white_check_mark:   | :white_check_mark:   | :white_large_square: |
 | halotroop2288's API | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: |
 
 ## Setup

@@ -95,6 +95,8 @@ subprojects {
 
 		modImplementation "com.github.minecraft-cursed-legacy:cursed-fabric-loader:${project.loader_version}"
 
+		implementation "com.github.mineLdiver:UnsafeEvents:7efec57"
+
 	}
 
 	processResources {

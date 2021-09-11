@@ -11,26 +11,22 @@ import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.registry.ItemRegistry;
 
-public class StAPI implements AbstractAPIInterface
-{
+import java.util.function.IntFunction;
+
+public class StAPI implements AbstractAPIInterface {
+
     @Override
-    public int getBlockID() {
-        return BlockRegistry.INSTANCE.getNextSerialID();
+    public BlockBase onBlockInit(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase) {
+        BlockBase q = blockBase.apply(BlockRegistry.INSTANCE.getNextSerialID());
+        BlockRegistry.INSTANCE.register(StAPICompatibility.from(identifier), q);
+        return q;
     }
 
     @Override
-    public int getItemID() {
-        return ItemRegistry.INSTANCE.getNextSerialID();
-    }
-
-    @Override
-    public void onBlockInit(InstanceIdentifier identifier, BlockBase blockBase) {
-        BlockRegistry.INSTANCE.register(StAPICompatibility.from(identifier), blockBase);
-    }
-
-    @Override
-    public void onItemInit(InstanceIdentifier identifier, ItemBase itemBase) {
-        ItemRegistry.INSTANCE.register(StAPICompatibility.from(identifier), itemBase);
+    public ItemBase onItemInit(InstanceIdentifier identifier, IntFunction<ItemBase> itemBase) {
+        ItemBase q = itemBase.apply(ItemRegistry.INSTANCE.getNextSerialID());
+        ItemRegistry.INSTANCE.register(StAPICompatibility.from(identifier), q);
+        return q;
     }
 
     @Override

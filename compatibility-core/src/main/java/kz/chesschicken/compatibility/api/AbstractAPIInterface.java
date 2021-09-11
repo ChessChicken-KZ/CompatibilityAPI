@@ -4,18 +4,16 @@ import net.minecraft.block.BlockBase;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
 
+import java.util.function.IntFunction;
+
 public interface AbstractAPIInterface {
-    public int getBlockID();
+    BlockBase onBlockInit(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase);
 
-    public int getItemID();
+    ItemBase onItemInit(InstanceIdentifier identifier, IntFunction<ItemBase> itemBase);
 
-    public void onBlockInit(InstanceIdentifier identifier, BlockBase blockBase);
+    void onShapedRecipeInit(ItemInstance result, Object[] ingredients);
 
-    public void onItemInit(InstanceIdentifier identifier, ItemBase itemBase);
+    void onShapelessRecipeInit(ItemInstance result, Object[] ingredients);
 
-    public void onShapedRecipeInit(ItemInstance result, Object[] ingredients);
-
-    public void onShapelessRecipeInit(ItemInstance result, Object[] ingredients);
-
-    public void onSmeltingRecipeInit(ItemInstance result, ItemInstance ingredients);
+    void onSmeltingRecipeInit(ItemInstance result, ItemInstance ingredients);
 }

@@ -7,12 +7,13 @@ import net.minecraft.block.BlockBase;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
 
+import java.util.function.IntFunction;
+
 public class CompatibilityEvent {
     public static class Block extends Event {
 
-        public BlockBase register(InstanceIdentifier identifier, BlockBase instance) {
-            CompatibilityAPI.CURRENT_API.onBlockInit(identifier, instance);
-            return instance;
+        public BlockBase register(InstanceIdentifier identifier, IntFunction<BlockBase> instance) {
+            return CompatibilityAPI.CURRENT_API.onBlockInit(identifier, instance);
         }
 
         @Override
@@ -25,9 +26,8 @@ public class CompatibilityEvent {
 
     public static class Item extends Event {
 
-        public ItemBase register(InstanceIdentifier identifier, ItemBase instance) {
-            CompatibilityAPI.CURRENT_API.onItemInit(identifier, instance);
-            return instance;
+        public ItemBase register(InstanceIdentifier identifier, IntFunction<ItemBase> instance) {
+            return CompatibilityAPI.CURRENT_API.onItemInit(identifier, instance);
         }
 
         @Override

@@ -5,7 +5,6 @@ group = project.maven_group
 dependencies {
     implementation "com.github.jhalterman:typetools:87240d6"
     implementation "com.github.mineLdiver:expressions:2fa66db"
-    implementation "com.github.mineLdiver:UnsafeEvents:7efec57"
 
     modImplementation 'com.github.ChessChicken-KZ:StationAPI:43a1d4c612'
 

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "compatibility-stapi",
+  "id": "compatibility-cla",
   "version": "${version}",
 
-  "name": "CompatibilityAPI (StAPI)",
-  "description": "StAPI support module for CompatibilityAPI",
+  "name": "CompatibilityAPI (CursedLegacyAPI)",
+  "description": "CursedLegacyAPI support module for CompatibilityAPI",
   "authors": [
     "ChessChicken-KZ"
   ],
@@ -15,16 +15,16 @@
   },
 
   "license": "MIT",
-  "icon": "assets/compatibility-stapi/icon.png",
+  "icon": "assets/compatibility-cla/icon.png",
 
   "environment": "*",
   "entrypoints": {
-    "stationapi:event_bus": [
-      "kz.chesschicken.compatibility.stapi.EventCall"
+    "main": [
+      "kz.chesschicken.compatibility.cla.EventCall"
     ]
   },
   "mixins": [
-    "compatibility-stapi.mixins.json"
+    "compatibility-cla.mixins.json"
   ],
 
   "depends": {
