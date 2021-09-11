@@ -29,7 +29,6 @@ public class CursedLegacyAPI implements APIInterface {
     }
 
     @Override
-    @SneakyThrows
     public BlockBase onBlockInit(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase) {
         BlockBase q = Registries.TILE.register(CursedLegacyApiUtils.from(identifier), blockBase);
         if(q.getClass().isAnnotationPresent(UseCustomTileItem.class))
