@@ -30,22 +30,27 @@ public class CompatibilityAPI implements PreLaunchEntrypoint {
 
     public void onPreLaunch() {
         LOGGER.info("Searching for possible mods.");
-
         FabricLoader.getInstance().getEntrypointContainers("compatibility_mod", Object.class).forEach(oec -> {
-
-            CompatibilityAPI.LOGGER.info("Found entrypoint(s) inside " + oec.getProvider().getMetadata().getId() + " mod.");
-
-            if (oec.getEntrypoint().getClass() == Class.class)
-                EVENT_BUS.register((Class<?>) oec.getEntrypoint());
-            else if (oec.getEntrypoint() instanceof Consumer)
-                EVENT_BUS.register((Consumer<? extends Event>) oec.getEntrypoint());
-            else if (oec.getEntrypoint().getClass() == Method.class)
-                EVENT_BUS.register((Method) oec.getEntrypoint());
+            LOGGER.info("Found entrypoint(s) inside " + oec.getProvider().getMetadata().getId() + " mod.");
+            registerModEvents(oec.getEntrypoint());
         });
 
         if(CURRENT_API == null) {
             throw new RuntimeException("No API found! Please install StAPI nor CursedLegacyApi nor Beta-Essentials...");
         }
     }
+
+    private void registerModEvents(Object entry) {
+        if (entry.getClass() == Class.class)
+            EVENT_BUS.register((Class<?>) entry);
+        else if (entry instanceof Consumer)
+            EVENT_BUS.register((Consumer<? extends Event>) entry);
+        else if (entry.getClass() == Method.class)
+            EVENT_BUS.register((Method) entry);
+        else
+            EVENT_BUS.register(entry);
+    }
+
+
 
 }

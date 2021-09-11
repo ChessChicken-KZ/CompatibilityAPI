@@ -1,7 +1,7 @@
 package kz.chesschicken.compatibility.stapi;
 
 import kz.chesschicken.compatibility.CompatibilityAPI;
-import kz.chesschicken.compatibility.event.CompatibilityEvent;
+import kz.chesschicken.compatibility.event.*;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
@@ -15,14 +15,14 @@ public class EventCall {
     @EventListener
     public void registerBlocks(BlockRegistryEvent event) {
         CompatibilityAPI.LOGGER.info("Called blocks register event.");
-        CompatibilityAPI.EVENT_BUS.post(new CompatibilityEvent.Block());
+        CompatibilityAPI.EVENT_BUS.post(new EventBlock());
     }
 
     @SuppressWarnings("unused")
     @EventListener
     public void registerItems(ItemRegistryEvent event) {
         CompatibilityAPI.LOGGER.info("Called items register event.");
-        CompatibilityAPI.EVENT_BUS.post(new CompatibilityEvent.Item());
+        CompatibilityAPI.EVENT_BUS.post(new EventItem());
     }
 
     @SuppressWarnings("unused")
@@ -32,20 +32,20 @@ public class EventCall {
         CompatibilityAPI.LOGGER.info("Called recipes register event." + (event.recipeId));
         Identifier type = event.recipeId;
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type())
-            CompatibilityAPI.EVENT_BUS.post(new CompatibilityEvent.ShapedRecipe());
+            CompatibilityAPI.EVENT_BUS.post(new EventShapedRecipe());
 
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type())
-            CompatibilityAPI.EVENT_BUS.post(new CompatibilityEvent.ShapelessRecipe());
+            CompatibilityAPI.EVENT_BUS.post(new EventShapelessRecipe());
 
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type())
-            CompatibilityAPI.EVENT_BUS.post(new CompatibilityEvent.SmeltingRecipe());
+            CompatibilityAPI.EVENT_BUS.post(new EventSmeltingRecipe());
     }
 
     @SuppressWarnings("unused")
     @EventListener
     public void registerTextures(TextureRegisterEvent event)
     {
-        CompatibilityAPI.EVENT_BUS.post(new CompatibilityEvent.Texture());
+        CompatibilityAPI.EVENT_BUS.post(new EventTexture());
     }
 
 }
