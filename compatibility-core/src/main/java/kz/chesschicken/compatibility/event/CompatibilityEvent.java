@@ -13,7 +13,7 @@ public class CompatibilityEvent {
     public static class Block extends Event {
 
         public BlockBase register(InstanceIdentifier identifier, IntFunction<BlockBase> instance) {
-            return CompatibilityAPI.CURRENT_API.onBlockInit(identifier, instance);
+            return CompatibilityAPI.GET_API().onBlockInit(identifier, instance);
         }
 
         @Override
@@ -27,7 +27,7 @@ public class CompatibilityEvent {
     public static class Item extends Event {
 
         public ItemBase register(InstanceIdentifier identifier, IntFunction<ItemBase> instance) {
-            return CompatibilityAPI.CURRENT_API.onItemInit(identifier, instance);
+            return CompatibilityAPI.GET_API().onItemInit(identifier, instance);
         }
 
         @Override
@@ -41,7 +41,7 @@ public class CompatibilityEvent {
     public static class ShapedRecipe extends Event {
 
         public void register(ItemInstance result, Object[] ingredients) {
-            CompatibilityAPI.CURRENT_API.onShapedRecipeInit(result, ingredients);
+            CompatibilityAPI.GET_API().onShapedRecipeInit(result, ingredients);
         }
 
         @Override
@@ -55,7 +55,7 @@ public class CompatibilityEvent {
     public static class ShapelessRecipe extends Event {
 
         public void register(ItemInstance result, Object[] ingredients) {
-            CompatibilityAPI.CURRENT_API.onShapelessRecipeInit(result, ingredients);
+            CompatibilityAPI.GET_API().onShapelessRecipeInit(result, ingredients);
         }
 
         @Override
@@ -69,7 +69,7 @@ public class CompatibilityEvent {
     public static class SmeltingRecipe extends Event {
 
         public void register(ItemInstance result, ItemInstance ingredients) {
-            CompatibilityAPI.CURRENT_API.onSmeltingRecipeInit(result, ingredients);
+            CompatibilityAPI.GET_API().onSmeltingRecipeInit(result, ingredients);
         }
 
         @Override
@@ -83,11 +83,11 @@ public class CompatibilityEvent {
     public static class Texture extends Event {
 
         public int addBlockTexture(BlockBase instance, String s) {
-            return CompatibilityAPI.CURRENT_API.onBlockTextureInit(instance, s);
+            return CompatibilityAPI.GET_API().onBlockTextureInit(instance, s);
         }
 
         public int addItemTexture(ItemBase instance, String s) {
-            return CompatibilityAPI.CURRENT_API.onItemTextureInit(instance, s);
+            return CompatibilityAPI.GET_API().onItemTextureInit(instance, s);
         }
 
         @Override

@@ -151,6 +151,21 @@ archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 
+sourceSets {
+	testmod
+}
+
+dependencies {
+	afterEvaluate {
+		subprojects.each {
+			compile project(path: ":${it.name}", configuration: "dev")
+			include project("${it.name}:")
+
+			testmodCompile project("${it.name}:").sourceSets.testmod.output
+		}
+	}
+}
+
 processResources {
 	inputs.property "version", project.version
 

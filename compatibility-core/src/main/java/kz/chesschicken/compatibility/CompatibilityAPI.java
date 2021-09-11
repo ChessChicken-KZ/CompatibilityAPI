@@ -13,16 +13,27 @@ import java.util.function.Consumer;
 
 
 public class CompatibilityAPI implements PreLaunchEntrypoint {
-    public static APIInterface CURRENT_API = null;
+    private static APIInterface CURRENT_API = null;
     public static final Logger LOGGER = LogManager.getLogger("CompatibilityAPI");
     public static final EventBus EVENT_BUS = new EventBus();
+
+    public static APIInterface GET_API() {
+        return CURRENT_API;
+    }
+
+    public static void SET_API(APIInterface apiInterface) {
+        /* StationAPI is based. */
+        if(CURRENT_API == null || apiInterface.getID().equals("stationapi"))
+            CURRENT_API = apiInterface;
+    }
+
 
     public void onPreLaunch() {
         LOGGER.info("Searching for possible mods.");
 
         FabricLoader.getInstance().getEntrypointContainers("compatibility_mod", Object.class).forEach(oec -> {
 
-            CompatibilityAPI.LOGGER.info("comp!init " + oec.getProvider().getMetadata().getName());
+            CompatibilityAPI.LOGGER.info("Found entrypoint(s) inside " + oec.getProvider().getMetadata().getId() + " mod.");
 
             if (oec.getEntrypoint().getClass() == Class.class)
                 EVENT_BUS.register((Class<?>) oec.getEntrypoint());
@@ -32,7 +43,7 @@ public class CompatibilityAPI implements PreLaunchEntrypoint {
                 EVENT_BUS.register((Method) oec.getEntrypoint());
         });
 
-        if(CompatibilityAPI.CURRENT_API == null) {
+        if(CURRENT_API == null) {
             throw new RuntimeException("No API found! Please install StAPI nor CursedLegacyApi nor Beta-Essentials...");
         }
     }
