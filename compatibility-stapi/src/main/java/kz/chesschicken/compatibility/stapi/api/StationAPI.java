@@ -2,11 +2,12 @@ package kz.chesschicken.compatibility.stapi.api;
 
 import kz.chesschicken.compatibility.api.APIInterface;
 import kz.chesschicken.compatibility.api.InstanceIdentifier;
-import kz.chesschicken.compatibility.stapi.utils.StAPIUtils;
+import kz.chesschicken.compatibility.stapi.utils.StationApiUtils;
 import net.minecraft.block.BlockBase;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
-import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
+import net.modificationstation.stationapi.api.client.texture.atlas.CustomAtlasProvider;
+import net.modificationstation.stationapi.api.client.texture.atlas.ExpandableAtlas;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
@@ -24,14 +25,14 @@ public class StationAPI implements APIInterface {
     @Override
     public BlockBase onBlockInit(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase) {
         BlockBase q = blockBase.apply(BlockRegistry.INSTANCE.getNextSerialID());
-        BlockRegistry.INSTANCE.register(StAPIUtils.from(identifier), q);
+        BlockRegistry.INSTANCE.register(StationApiUtils.from(identifier), q);
         return q;
     }
 
     @Override
     public ItemBase onItemInit(InstanceIdentifier identifier, IntFunction<ItemBase> itemBase) {
         ItemBase q = itemBase.apply(ItemRegistry.INSTANCE.getNextSerialID());
-        ItemRegistry.INSTANCE.register(StAPIUtils.from(identifier), q);
+        ItemRegistry.INSTANCE.register(StationApiUtils.from(identifier), q);
         return q;
     }
 
@@ -52,11 +53,15 @@ public class StationAPI implements APIInterface {
 
     @Override
     public int onBlockTextureInit(BlockBase blockBase, String s) {
-        return Atlases.getStationTerrain().addTexture(s).index;
+        int i = ((ExpandableAtlas)((CustomAtlasProvider)blockBase).getAtlas()).addTexture(s).index;
+        blockBase.texture = i;
+        return i;
     }
 
     @Override
     public int onItemTextureInit(ItemBase itemBase, String s) {
-        return Atlases.getStationGuiItems().addTexture(s).index;
+        int i = ((ExpandableAtlas)((CustomAtlasProvider)itemBase).getAtlas()).addTexture(s).index;
+        itemBase.setTexturePosition(i);
+        return i;
     }
 }

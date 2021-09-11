@@ -14,14 +14,12 @@ public class EventCall {
     @SuppressWarnings("unused")
     @EventListener
     public void registerBlocks(BlockRegistryEvent event) {
-        CompatibilityAPI.LOGGER.info("Called blocks register event.");
         CompatibilityAPI.EVENT_BUS.post(new EventBlock());
     }
 
     @SuppressWarnings("unused")
     @EventListener
     public void registerItems(ItemRegistryEvent event) {
-        CompatibilityAPI.LOGGER.info("Called items register event.");
         CompatibilityAPI.EVENT_BUS.post(new EventItem());
     }
 
@@ -29,7 +27,6 @@ public class EventCall {
     @EventListener
     public void registerRecipes(RecipeRegisterEvent event)
     {
-        CompatibilityAPI.LOGGER.info("Called recipes register event." + (event.recipeId));
         Identifier type = event.recipeId;
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type())
             CompatibilityAPI.EVENT_BUS.post(new EventShapedRecipe());

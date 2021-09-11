@@ -5,7 +5,7 @@ import io.github.minecraftcursedlegacy.api.recipe.Recipes;
 import io.github.minecraftcursedlegacy.api.registry.Registries;
 import kz.chesschicken.compatibility.api.APIInterface;
 import kz.chesschicken.compatibility.api.InstanceIdentifier;
-import kz.chesschicken.compatibility.cla.utils.CLAUtils;
+import kz.chesschicken.compatibility.cla.utils.CursedLegacyApiUtils;
 import net.minecraft.block.BlockBase;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
@@ -25,12 +25,12 @@ public class CursedLegacyAPI implements APIInterface {
 
     @Override
     public BlockBase onBlockInit(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase) {
-        return Registries.TILE.register(CLAUtils.from(identifier), blockBase);
+        return Registries.TILE.register(CursedLegacyApiUtils.from(identifier), blockBase);
     }
 
     @Override
     public ItemBase onItemInit(InstanceIdentifier identifier, IntFunction<ItemBase> itemBase) {
-        return Registries.ITEM_TYPE.register(CLAUtils.from(identifier), itemBase);
+        return Registries.ITEM_TYPE.register(CursedLegacyApiUtils.from(identifier), itemBase);
     }
 
     @Override
