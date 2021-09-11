@@ -193,7 +193,7 @@ subprojects {
 
 				artifact("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}-javadoc.jar") {
 					classifier 'javadoc'
-					builtBy javadocJarGR
+					builtBy javadocJar
 				}
 			}
 		}
