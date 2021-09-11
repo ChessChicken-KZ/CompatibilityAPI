@@ -3,10 +3,14 @@ package kz.chesschicken.compatibility.cla.api;
 import io.github.minecraftcursedlegacy.api.client.AtlasMap;
 import io.github.minecraftcursedlegacy.api.recipe.Recipes;
 import io.github.minecraftcursedlegacy.api.registry.Registries;
+import io.github.minecraftcursedlegacy.api.registry.TileItems;
 import kz.chesschicken.compatibility.api.APIInterface;
 import kz.chesschicken.compatibility.api.InstanceIdentifier;
+import kz.chesschicken.compatibility.api.tools.UseCustomTileItem;
 import kz.chesschicken.compatibility.cla.utils.CursedLegacyApiUtils;
+import lombok.SneakyThrows;
 import net.minecraft.block.BlockBase;
+import net.minecraft.item.Block;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.recipe.SmeltingRecipeRegistry;
@@ -14,6 +18,7 @@ import paulevs.corelib.model.Model;
 import paulevs.corelib.model.prefab.FullCubeModel;
 import paulevs.corelib.registry.ModelRegistry;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.function.IntFunction;
 
 public class CursedLegacyAPI implements APIInterface {
@@ -24,8 +29,20 @@ public class CursedLegacyAPI implements APIInterface {
     }
 
     @Override
+    @SneakyThrows
     public BlockBase onBlockInit(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase) {
-        return Registries.TILE.register(CursedLegacyApiUtils.from(identifier), blockBase);
+        BlockBase q = Registries.TILE.register(CursedLegacyApiUtils.from(identifier), blockBase);
+        if(q.getClass().isAnnotationPresent(UseCustomTileItem.class))
+            TileItems.registerTileItem(CursedLegacyApiUtils.from(identifier), q, value -> {
+                try {
+                    return q.getClass().getDeclaredAnnotation(UseCustomTileItem.class).value().getConstructor(int.class).newInstance(value);
+                } catch (InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+                    return new Block(value);
+                }
+            });
+        else
+            TileItems.registerTileItem(CursedLegacyApiUtils.from(identifier), q);
+        return q;
     }
 
     @Override
