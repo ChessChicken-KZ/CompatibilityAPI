@@ -1,7 +1,6 @@
 package kz.chesschicken.compatibility;
 
 import kz.chesschicken.compatibility.api.APIInterface;
-import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 import net.mine_diver.unsafeevents.Event;
@@ -13,28 +12,29 @@ import java.lang.reflect.Method;
 import java.util.function.Consumer;
 
 
-public class CompatibilityAPI implements PreLaunchEntrypoint, ModInitializer {
-    public static APIInterface CURRENT_API;
+public class CompatibilityAPI implements PreLaunchEntrypoint {
+    public static APIInterface CURRENT_API = null;
     public static final Logger LOGGER = LogManager.getLogger("CompatibilityAPI");
     public static final EventBus EVENT_BUS = new EventBus();
 
-    @Override
     public void onPreLaunch() {
         LOGGER.info("Searching for possible mods.");
 
-        FabricLoader.getInstance().getEntrypointContainers("compatibility:init", Object.class).forEach(objectEntrypointContainer -> {
-            if (objectEntrypointContainer.getEntrypoint().getClass() == Class.class)
-                EVENT_BUS.register((Class<?>) objectEntrypointContainer.getEntrypoint());
-            else if (objectEntrypointContainer.getEntrypoint() instanceof Consumer)
-                EVENT_BUS.register((Consumer<? extends Event>) objectEntrypointContainer.getEntrypoint());
-            else if (objectEntrypointContainer.getEntrypoint().getClass() == Method.class)
-                EVENT_BUS.register((Method) objectEntrypointContainer.getEntrypoint());
+        FabricLoader.getInstance().getEntrypointContainers("compatibility_mod", Object.class).forEach(oec -> {
+
+            CompatibilityAPI.LOGGER.info("comp!init " + oec.getProvider().getMetadata().getName());
+
+            if (oec.getEntrypoint().getClass() == Class.class)
+                EVENT_BUS.register((Class<?>) oec.getEntrypoint());
+            else if (oec.getEntrypoint() instanceof Consumer)
+                EVENT_BUS.register((Consumer<? extends Event>) oec.getEntrypoint());
+            else if (oec.getEntrypoint().getClass() == Method.class)
+                EVENT_BUS.register((Method) oec.getEntrypoint());
         });
+
+        if(CompatibilityAPI.CURRENT_API == null && !FabricLoader.getInstance().isModLoaded("testmod")) {
+            throw new RuntimeException("No API found! Please install StAPI nor CursedLegacyApi nor Beta-Essentials...");
+        }
     }
 
-    @Override
-    public void onInitialize() {
-        if(CURRENT_API == null)
-            throw new NullPointerException("No API found! Please install StAPI nor CursedLegacyApi nor Beta-Essentials");
-    }
 }

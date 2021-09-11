@@ -18,6 +18,11 @@ import java.util.function.IntFunction;
 public class CursedLegacyAPI implements APIInterface {
 
     @Override
+    public String getID() {
+        return "api"; /* cool */
+    }
+
+    @Override
     public BlockBase onBlockInit(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase) {
         return Registries.TILE.register(CLAUtils.from(identifier), blockBase);
     }

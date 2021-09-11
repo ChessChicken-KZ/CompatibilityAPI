@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "compatibility-stapi",
+  "id": "compatibility_stapi",
   "version": "${version}",
 
   "name": "CompatibilityAPI (StAPI)",
@@ -24,7 +24,7 @@
     ]
   },
   "mixins": [
-    "compatibility-stapi.mixins.json"
+    "compatibility_stapi.mixins.json"
   ],
 
   "depends": {

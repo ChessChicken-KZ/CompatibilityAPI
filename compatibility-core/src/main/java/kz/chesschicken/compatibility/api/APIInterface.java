@@ -7,6 +7,8 @@ import net.minecraft.item.ItemInstance;
 import java.util.function.IntFunction;
 
 public interface APIInterface {
+    String getID();
+
     BlockBase onBlockInit(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase);
 
     ItemBase onItemInit(InstanceIdentifier identifier, IntFunction<ItemBase> itemBase);

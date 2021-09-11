@@ -20,7 +20,11 @@ plugins {
 	id 'maven-publish'
 }
 
-subprojects {
+import net.fabricmc.loom.task.RunClientTask
+import net.fabricmc.loom.task.RunServerTask
+
+
+allprojects {
 	apply plugin: "fabric-loom"
 
 	sourceCompatibility = JavaVersion.VERSION_1_8
@@ -29,6 +33,13 @@ subprojects {
 	archivesBaseName = project.archives_base_name
 	version = project.mod_version
 	group = project.maven_group
+
+	sourceSets {
+		testmod {
+			compileClasspath += project(":compatibility-core").sourceSets.main.compileClasspath
+			runtimeClasspath += project(":compatibility-core").sourceSets.main.runtimeClasspath
+		}
+	}
 
 	idea {
 		module {
@@ -97,6 +108,7 @@ subprojects {
 
 		implementation "com.github.mineLdiver:UnsafeEvents:7efec57"
 
+		testmodCompileClasspath(project(':compatibility-core'))
 	}
 
 	processResources {

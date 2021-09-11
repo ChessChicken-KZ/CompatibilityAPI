@@ -1,3 +1,5 @@
+import net.fabricmc.loom.task.RunClientTask
+
 archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
@@ -22,4 +24,9 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude "fabric.mod.json"
     }
+}
+
+task runTestmodClientSTAPI(type: RunClientTask) {
+    //classpath project(":compatibility-stapi").sourceSets.main.runtimeClasspath
+    classpath = sourceSets.testmod.runtimeClasspath
 }

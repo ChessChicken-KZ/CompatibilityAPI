@@ -17,6 +17,11 @@ import java.util.function.IntFunction;
 public class StationAPI implements APIInterface {
 
     @Override
+    public String getID() {
+        return "stationapi";
+    }
+
+    @Override
     public BlockBase onBlockInit(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase) {
         BlockBase q = blockBase.apply(BlockRegistry.INSTANCE.getNextSerialID());
         BlockRegistry.INSTANCE.register(StAPIUtils.from(identifier), q);

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "compatibility",
-  "version": "${version}",
+  "id": "testmod",
+  "version": "null",
 
-  "name": "CompatibilityAPI (Core)",
-  "description": "External API to handle some mods to work on every possible fabric API.",
+  "name": "CompatibilityAPI (TestMod)",
+  "description": "Test mod for handling some weird stuff.",
   "authors": [
     "ChessChicken-KZ"
   ],
@@ -15,23 +15,19 @@
   },
 
   "license": "MIT",
-  "icon": "assets/compatibility/icon.png",
+  "icon": "assets/testmod/icon.png",
 
   "environment": "*",
   "entrypoints": {
-    "preLaunch": [
-      "kz.chesschicken.compatibility.CompatibilityAPI"
+    "compatibility_mod": [
+      "kz.chesschicken.testmod.TestModInit"
     ]
   },
   "mixins": [
-    "compatibility.mixins.json"
+    "testmod.mixins.json"
   ],
 
   "depends": {
     "minecraft": "1.0.0-beta.7.3"
-  },
-
-  "custom": {
-    "modmenu:api": true
   }
 }
