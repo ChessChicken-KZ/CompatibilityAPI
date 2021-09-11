@@ -176,8 +176,6 @@ subprojects {
 			mavenLocal()
 		}
 
-		tasks.publishToMavenLocal.dependsOn(tasks.remapJar)
-
 		publications {
 			mavenJava(MavenPublication) {
 				artifactId project.archives_base_name
