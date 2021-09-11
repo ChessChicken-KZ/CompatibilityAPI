@@ -4,6 +4,7 @@
   "package": "kz.chesschicken.compatibility.cla.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "MixinCompatibilityAPI"
   ],
   "server": [
   ],

@@ -6,7 +6,7 @@ dependencies {
     implementation "com.github.jhalterman:typetools:87240d6"
     implementation "com.github.mineLdiver:expressions:2fa66db"
 
-    modImplementation 'com.github.ChessChicken-KZ:StationAPI:43a1d4c612'
+    modImplementation 'com.github.ModificationStation:StationAPI:d6f9496e93'
 
     implementation project(':compatibility-core')
 }

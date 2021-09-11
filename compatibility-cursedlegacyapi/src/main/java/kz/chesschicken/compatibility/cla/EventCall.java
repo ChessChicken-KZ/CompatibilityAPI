@@ -1,18 +1,17 @@
 package kz.chesschicken.compatibility.cla;
 
 import kz.chesschicken.compatibility.CompatibilityAPI;
-import kz.chesschicken.compatibility.cla.api.CursedLegacyAPI;
 import kz.chesschicken.compatibility.event.CompatibilityEvent;
 import net.fabricmc.api.ModInitializer;
 
 public class EventCall implements ModInitializer {
     @Override
     public void onInitialize() {
-        CompatibilityAPI.CURRENT_API = new CursedLegacyAPI();
-
         //wait, what
         CompatibilityAPI.EVENT_BUS.post(new CompatibilityEvent.Block());
         CompatibilityAPI.EVENT_BUS.post(new CompatibilityEvent.Item());
+
+        CompatibilityAPI.EVENT_BUS.post(new CompatibilityEvent.Texture());
 
         CompatibilityAPI.EVENT_BUS.post(new CompatibilityEvent.ShapedRecipe());
         CompatibilityAPI.EVENT_BUS.post(new CompatibilityEvent.ShapelessRecipe());

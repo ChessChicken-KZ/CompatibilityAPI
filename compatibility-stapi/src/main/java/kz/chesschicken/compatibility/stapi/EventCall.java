@@ -2,8 +2,9 @@ package kz.chesschicken.compatibility.stapi;
 
 import kz.chesschicken.compatibility.CompatibilityAPI;
 import kz.chesschicken.compatibility.event.CompatibilityEvent;
-import kz.chesschicken.compatibility.stapi.api.StAPI;
+import kz.chesschicken.compatibility.stapi.api.StationAPI;
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.event.mod.PreInitEvent;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
@@ -28,13 +29,6 @@ public class EventCall {
 
     @SuppressWarnings("unused")
     @EventListener
-    public void setCurrentAPI(PreInitEvent event) {
-        CompatibilityAPI.LOGGER.debug("Called api setup event.");
-        CompatibilityAPI.CURRENT_API = new StAPI();
-    }
-
-    @SuppressWarnings("unused")
-    @EventListener
     public void registerRecipes(RecipeRegisterEvent event)
     {
         CompatibilityAPI.LOGGER.debug("Called recipes register event." + (event.recipeId));
@@ -47,7 +41,13 @@ public class EventCall {
 
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type())
             CompatibilityAPI.EVENT_BUS.post(new CompatibilityEvent.SmeltingRecipe());
+    }
 
+    @SuppressWarnings("unused")
+    @EventListener
+    public void registerTextures(TextureRegisterEvent event)
+    {
+        CompatibilityAPI.EVENT_BUS.post(new CompatibilityEvent.Texture());
     }
 
 }

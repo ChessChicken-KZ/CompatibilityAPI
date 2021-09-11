@@ -79,4 +79,22 @@ public class CompatibilityEvent {
 
         public static final int ID = NEXT_ID.incrementAndGet();
     }
+
+    public static class Texture extends Event {
+
+        public int addBlockTexture(BlockBase instance, String s) {
+            return CompatibilityAPI.CURRENT_API.onBlockTextureInit(instance, s);
+        }
+
+        public int addItemTexture(ItemBase instance, String s) {
+            return CompatibilityAPI.CURRENT_API.onItemTextureInit(instance, s);
+        }
+
+        @Override
+        protected int getEventID() {
+            return ID;
+        }
+
+        public static final int ID = NEXT_ID.incrementAndGet();
+    }
 }

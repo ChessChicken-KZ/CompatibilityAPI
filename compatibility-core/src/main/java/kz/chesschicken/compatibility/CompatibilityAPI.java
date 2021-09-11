@@ -1,6 +1,6 @@
 package kz.chesschicken.compatibility;
 
-import kz.chesschicken.compatibility.api.AbstractAPIInterface;
+import kz.chesschicken.compatibility.api.APIInterface;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
@@ -14,8 +14,8 @@ import java.util.function.Consumer;
 
 
 public class CompatibilityAPI implements PreLaunchEntrypoint, ModInitializer {
-    public static AbstractAPIInterface CURRENT_API;
-    public static final Logger LOGGER = LogManager.getLogger("Compatibility");
+    public static APIInterface CURRENT_API;
+    public static final Logger LOGGER = LogManager.getLogger("CompatibilityAPI");
     public static final EventBus EVENT_BUS = new EventBus();
 
     @Override

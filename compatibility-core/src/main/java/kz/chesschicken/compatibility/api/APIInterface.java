@@ -6,7 +6,7 @@ import net.minecraft.item.ItemInstance;
 
 import java.util.function.IntFunction;
 
-public interface AbstractAPIInterface {
+public interface APIInterface {
     BlockBase onBlockInit(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase);
 
     ItemBase onItemInit(InstanceIdentifier identifier, IntFunction<ItemBase> itemBase);
@@ -16,4 +16,8 @@ public interface AbstractAPIInterface {
     void onShapelessRecipeInit(ItemInstance result, Object[] ingredients);
 
     void onSmeltingRecipeInit(ItemInstance result, ItemInstance ingredients);
+
+    int onBlockTextureInit(BlockBase blockBase, String s);
+
+    int onItemTextureInit(ItemBase itemBase, String s);
 }

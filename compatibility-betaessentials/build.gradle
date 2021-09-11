@@ -3,6 +3,8 @@ version = project.mod_version
 group = project.maven_group
 
 dependencies {
+    //no, it doesn't work lol
+    //modImplementation 'com.github.Better-Than-Updates-MC:API:004d17b00e'
 
     implementation project(':compatibility-core')
 }

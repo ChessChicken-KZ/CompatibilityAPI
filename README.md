@@ -6,8 +6,8 @@ Currently supported features:
 
 |      API Names      |        Blocks        |         Items        |        Recipes       |       Textures       |        Entity        |
 |:-------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|
-|      StationAPI     |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  | :white_large_square: | :white_large_square: |
-|  Cursed-Legacy-API  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  | :white_large_square: | :white_large_square: |
+|      StationAPI     |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  | :white_large_square: |
+|  Cursed-Legacy-API  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  | :white_large_square: |
 | halotroop2288's API | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: |
 
 ## Setup

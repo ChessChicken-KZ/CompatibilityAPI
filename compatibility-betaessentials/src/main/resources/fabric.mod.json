@@ -3,8 +3,8 @@
   "id": "compatibility-be",
   "version": "${version}",
 
-  "name": "CompatibilityAPI (CursedLegacyAPI)",
-  "description": "CursedLegacyAPI support module for CompatibilityAPI",
+  "name": "CompatibilityAPI (BetaEssentials)",
+  "description": "BetaEssentials support module for CompatibilityAPI",
   "authors": [
     "ChessChicken-KZ"
   ],
