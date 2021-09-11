@@ -1,0 +1,25 @@
+archivesBaseName = project.archives_base_name
+version = project.mod_version
+group = project.maven_group
+
+dependencies {
+    //that is the thing where you can break your legs
+    modImplementation('io.github.minecraft-cursed-legacy:cursed-legacy-api:1.1.0') {
+    	exclude group: 'io.github.minecraft-cursed-legacy', module: 'cursed-fabric-loader'
+    }
+
+    implementation project(':compatibility-core')
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include "fabric.mod.json"
+        expand "version": project.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude "fabric.mod.json"
+    }
+}

@@ -1,0 +1,4 @@
+rootProject.name = 'compatibility'
+include 'compatibility-core'
+include 'compatibility-stapi'
+include 'compatibility-cursedlegacyapi'

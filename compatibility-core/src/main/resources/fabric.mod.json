@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "compatibility",
+  "version": "${version}",
+
+  "name": "Old Fabric Compatibility",
+  "description": "Some patches to make beta APIs work together.",
+  "authors": [
+    "ChessChicken-KZ"
+  ],
+  "contact": {
+    "homepage": "https://github.com/ChessChicken-KZ/OldFabricCompatibility",
+    "sources": "https://github.com/ChessChicken-KZ/OldFabricCompatibility",
+    "issues": "https://github.com/ChessChicken-KZ/OldFabricCompatibility/issues"
+  },
+
+  "license": "MIT",
+  "icon": "assets/compatibility/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "preLaunch": [
+      "kz.chesschicken.compatibility.utils.TouchHelper"
+    ]
+  },
+  "mixins": [
+    "compatibility.mixins.json"
+  ],
+
+  "depends": {
+    "minecraft": "1.0.0-beta.7.3"
+  }
+}
