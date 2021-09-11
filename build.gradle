@@ -22,6 +22,7 @@ plugins {
 
 allprojects {
 	apply plugin: "fabric-loom"
+	apply plugin: 'maven-publish'
 
 	sourceCompatibility = JavaVersion.VERSION_1_8
 	targetCompatibility = JavaVersion.VERSION_1_8
@@ -171,6 +172,7 @@ tasks.withType(JavaCompile) {
 }
 
 subprojects {
+
 	publishing {
 		repositories {
 			mavenLocal()
@@ -179,17 +181,17 @@ subprojects {
 		publications {
 			mavenJava(MavenPublication) {
 				artifactId project.archives_base_name
-				artifact("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}.jar") {
+				artifact ("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}.jar") {
 					classifier null
 					builtBy remapJar
 				}
 
-				artifact("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}-dev.jar") {
+				artifact ("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}-dev.jar") {
 					classifier 'dev'
 					builtBy remapJar
 				}
 
-				artifact("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}-javadoc.jar") {
+				artifact ("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}-javadoc.jar") {
 					classifier 'javadoc'
 					builtBy javadocJar
 				}
