@@ -22,9 +22,7 @@ public class CompatibilityAPI implements PreLaunchEntrypoint, ModInitializer {
     public void onPreLaunch() {
         LOGGER.info("Searching for possible mods.");
 
-        FabricLoader fabricLoader = FabricLoader.getInstance();
-
-        fabricLoader.getEntrypointContainers("compatibility:init", Object.class).forEach(objectEntrypointContainer -> {
+        FabricLoader.getInstance().getEntrypointContainers("compatibility:init", Object.class).forEach(objectEntrypointContainer -> {
             if (objectEntrypointContainer.getEntrypoint().getClass() == Class.class)
                 EVENT_BUS.register((Class<?>) objectEntrypointContainer.getEntrypoint());
             else if (objectEntrypointContainer.getEntrypoint() instanceof Consumer)
