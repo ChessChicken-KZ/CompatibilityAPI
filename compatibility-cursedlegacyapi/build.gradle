@@ -28,4 +28,5 @@ processResources {
 
 task runTestmodClientCLA(type: RunClientTask) {
     classpath project(":compatibility-cursedlegacyapi").sourceSets.main.runtimeClasspath
+    //classpath = sourceSets.testmod.runtimeClasspath
 }

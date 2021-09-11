@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "compatibility-cla",
+  "id": "compatibility_cla",
   "version": "${version}",
 
   "name": "CompatibilityAPI (CursedLegacyAPI)",
@@ -15,16 +15,16 @@
   },
 
   "license": "MIT",
-  "icon": "assets/compatibility-cla/icon.png",
+  "icon": "assets/compatibility_cla/icon.png",
 
   "environment": "*",
   "entrypoints": {
-    "main": [
+    "init": [
       "kz.chesschicken.compatibility.cla.EventCall"
     ]
   },
   "mixins": [
-    "compatibility-cla.mixins.json"
+    "compatibility_cla.mixins.json"
   ],
 
   "depends": {

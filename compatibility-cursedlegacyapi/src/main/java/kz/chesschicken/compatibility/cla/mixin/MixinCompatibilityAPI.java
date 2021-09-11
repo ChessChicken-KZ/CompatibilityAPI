@@ -9,8 +9,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(CompatibilityAPI.class)
 public class MixinCompatibilityAPI {
-    @Inject(method = "onPreLaunch", at = @At("TAIL"), remap = false)
+    @Inject(method = "onPreLaunch", at = @At("HEAD"), remap = false)
     private void setCustomAPI(CallbackInfo ci) {
+        CompatibilityAPI.LOGGER.info("Using CursedFabricAPI as an API.");
         CompatibilityAPI.CURRENT_API = new CursedLegacyAPI();
     }
 }

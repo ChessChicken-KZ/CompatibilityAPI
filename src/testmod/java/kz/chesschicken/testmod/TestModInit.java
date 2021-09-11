@@ -11,6 +11,7 @@ import net.minecraft.item.ItemInstance;
 public class TestModInit {
     public static BlockBase testBlock;
 
+    @SuppressWarnings("unused")
     @EventListener
     public void registerBlock(CompatibilityEvent.Block event)
     {
@@ -18,6 +19,7 @@ public class TestModInit {
         testBlock = event.register(InstanceIdentifier.create("testmod:test_block"), value -> new BlockExample(value).setTranslationKey("test_block"));
     }
 
+    @SuppressWarnings("unused")
     @EventListener
     public void registerRecipes(CompatibilityEvent.ShapelessRecipe event)
     {

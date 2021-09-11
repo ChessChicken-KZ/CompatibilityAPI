@@ -32,7 +32,7 @@ public class CompatibilityAPI implements PreLaunchEntrypoint {
                 EVENT_BUS.register((Method) oec.getEntrypoint());
         });
 
-        if(CompatibilityAPI.CURRENT_API == null && !FabricLoader.getInstance().isModLoaded("testmod")) {
+        if(CompatibilityAPI.CURRENT_API == null) {
             throw new RuntimeException("No API found! Please install StAPI nor CursedLegacyApi nor Beta-Essentials...");
         }
     }

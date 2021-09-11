@@ -8,6 +8,7 @@ public class EventCall implements ModInitializer {
     @Override
     public void onInitialize() {
         //wait, what
+        CompatibilityAPI.LOGGER.info("Initializing mods...");
         CompatibilityAPI.EVENT_BUS.post(new CompatibilityEvent.Block());
         CompatibilityAPI.EVENT_BUS.post(new CompatibilityEvent.Item());
 
