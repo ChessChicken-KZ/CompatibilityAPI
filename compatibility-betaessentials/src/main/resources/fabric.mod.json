@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "compatibility-be",
+  "id": "compatibility_be",
   "version": "${version}",
 
   "name": "CompatibilityAPI (BetaEssentials)",
@@ -15,14 +15,14 @@
   },
 
   "license": "MIT",
-  "icon": "assets/compatibility-be/icon.png",
+  "icon": "assets/compatibility_be/icon.png",
 
   "environment": "*",
   "entrypoints": {
 
   },
   "mixins": [
-    "compatibility-be.mixins.json"
+    "compatibility_be.mixins.json"
   ],
 
   "depends": {

@@ -9,6 +9,7 @@ import kz.chesschicken.compatibility.cla.utils.CLAUtils;
 import net.minecraft.block.BlockBase;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
+import net.minecraft.recipe.SmeltingRecipeRegistry;
 import paulevs.corelib.model.Model;
 import paulevs.corelib.model.prefab.FullCubeModel;
 import paulevs.corelib.registry.ModelRegistry;
@@ -44,7 +45,7 @@ public class CursedLegacyAPI implements APIInterface {
 
     @Override
     public void onSmeltingRecipeInit(ItemInstance result, ItemInstance ingredients) {
-
+        SmeltingRecipeRegistry.getInstance().addSmeltingRecipe(result.itemId, ingredients);
     }
 
     /**
@@ -54,6 +55,7 @@ public class CursedLegacyAPI implements APIInterface {
      * @param s Texture path.
      * @return -1
      */
+    @Deprecated
     @Override
     public int onBlockTextureInit(BlockBase blockBase, String s) {
         Model model = new FullCubeModel(s);

@@ -3,7 +3,6 @@ package kz.chesschicken.compatibility.stapi;
 import kz.chesschicken.compatibility.CompatibilityAPI;
 import kz.chesschicken.compatibility.event.CompatibilityEvent;
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.modificationstation.stationapi.api.StationAPI;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
