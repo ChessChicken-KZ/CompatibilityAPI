@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "compatibility",
+  "id": "compatibility-stapi",
   "version": "${version}",
 
   "name": "Old Fabric Compatibility",
@@ -15,16 +15,16 @@
   },
 
   "license": "MIT",
-  "icon": "assets/compatibility/icon.png",
+  "icon": "assets/compatibility-stapi/icon.png",
 
   "environment": "*",
   "entrypoints": {
-    "preLaunch": [
-      "kz.chesschicken.compatibility.CompatibilityAPI"
+    "stationapi:event_bus": [
+      "kz.chesschicken.compatibility.stapi.EventCall"
     ]
   },
   "mixins": [
-    "compatibility.mixins.json"
+    "compatibility-stapi.mixins.json"
   ],
 
   "depends": {

@@ -2,6 +2,10 @@ archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 
+dependencies {
+    implementation "com.github.mineLdiver:UnsafeEvents:7efec57"
+}
+
 processResources {
     inputs.property "version", project.version
 
