@@ -8,6 +8,7 @@ import net.minecraft.network.PacketHandler;
 
 public class ChannelProxy extends PluginChannel {
     private final InstanceIdentifier identifier;
+
     public ChannelProxy(InstanceIdentifier i) {
         this.identifier = i;
     }
