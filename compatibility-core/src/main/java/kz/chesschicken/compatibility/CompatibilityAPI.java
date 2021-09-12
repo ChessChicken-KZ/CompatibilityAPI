@@ -1,6 +1,7 @@
 package kz.chesschicken.compatibility;
 
 import kz.chesschicken.compatibility.api.APIInterface;
+import kz.chesschicken.compatibility.event.EventPreInit;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 import net.mine_diver.unsafeevents.Event;
@@ -38,6 +39,8 @@ public class CompatibilityAPI implements PreLaunchEntrypoint {
         if(CURRENT_API == null) {
             throw new RuntimeException("No API found! Please install StAPI nor CursedLegacyApi nor Beta-Essentials...");
         }
+
+        EVENT_BUS.post(new EventPreInit());
     }
 
     private void registerModEvents(Object entry) {

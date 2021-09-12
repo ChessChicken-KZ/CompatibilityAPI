@@ -10,6 +10,8 @@ import net.fabricmc.loader.api.ModContainer;
 public class EventCall implements ModInitializer {
     @Override
     public void onInitialize() {
+        CompatibilityAPI.EVENT_BUS.post(new EventInit());
+
         CompatibilityAPI.EVENT_BUS.post(new EventBlock());
         CompatibilityAPI.EVENT_BUS.post(new EventItem());
 
@@ -22,5 +24,7 @@ public class EventCall implements ModInitializer {
         for(ModContainer modContainer : FabricLoader.getInstance().getAllMods())
             if(modContainer.getMetadata().containsCustomValue("compatibility:lang_file"))
                 CursedLegacyApiUtils.loadLangFile(modContainer.getMetadata().getId(), modContainer.getMetadata().getCustomValue("compatibility:lang_file").getAsString());
+
+        CompatibilityAPI.EVENT_BUS.post(new EventPostInit());
     }
 }
