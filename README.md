@@ -15,4 +15,4 @@ Currently supported features:
 For setup instructions, please refer to [BIN-example-mod page](https://github.com/calmilamsy/BIN-fabric-example-mod).
 
 ## License
-The project is under [MIT Licence](https://github.com/ChessChicken-KZ/AstolfoMod/blob/master/LICENSE). Feel free to look at it.
+The project is under [MIT Licence](https://github.com/ChessChicken-KZ/CompatibilityAPI/blob/master/LICENSE). Feel free to look at it.
