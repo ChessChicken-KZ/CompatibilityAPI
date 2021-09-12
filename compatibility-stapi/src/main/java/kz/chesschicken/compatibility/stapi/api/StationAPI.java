@@ -25,6 +25,10 @@ public class StationAPI implements APIInterface {
     @Override
     public BlockBase onBlockInit(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase) {
         BlockBase q = blockBase.apply(BlockRegistry.INSTANCE.getNextSerialID());
+
+        //Injecting annotations.
+        StationApiUtils.rebuildAnnotations(q.getClass());
+
         BlockRegistry.INSTANCE.register(StationApiUtils.from(identifier), q);
         return q;
     }

@@ -1,4 +1,4 @@
-package kz.chesschicken.compatibility.api.tools;
+package kz.chesschicken.compatibility.utils;
 
 import net.minecraft.item.Block;
 

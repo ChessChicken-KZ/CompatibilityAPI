@@ -6,9 +6,10 @@ import io.github.minecraftcursedlegacy.api.registry.Registries;
 import io.github.minecraftcursedlegacy.api.registry.TileItems;
 import kz.chesschicken.compatibility.api.APIInterface;
 import kz.chesschicken.compatibility.api.InstanceIdentifier;
-import kz.chesschicken.compatibility.api.tools.UseCustomTileItem;
+import kz.chesschicken.compatibility.utils.UseCustomTileItem;
 import kz.chesschicken.compatibility.cla.utils.CursedLegacyApiUtils;
-import lombok.SneakyThrows;
+import kz.chesschicken.compatibility.utils.UseMetaNamedTileItem;
+import kz.chesschicken.compatibility.utils.item.BlockMetaNamed;
 import net.minecraft.block.BlockBase;
 import net.minecraft.item.Block;
 import net.minecraft.item.ItemBase;
@@ -39,6 +40,8 @@ public class CursedLegacyAPI implements APIInterface {
                     return new Block(value);
                 }
             });
+        else if(q.getClass().isAnnotationPresent(UseMetaNamedTileItem.class))
+            TileItems.registerTileItem(CursedLegacyApiUtils.from(identifier), q, value -> new BlockMetaNamed(value, q.getClass().getDeclaredAnnotation(UseMetaNamedTileItem.class).value()));
         else
             TileItems.registerTileItem(CursedLegacyApiUtils.from(identifier), q);
         return q;
