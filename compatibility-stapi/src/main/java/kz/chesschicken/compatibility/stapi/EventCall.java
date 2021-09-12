@@ -1,7 +1,9 @@
 package kz.chesschicken.compatibility.stapi;
 
 import kz.chesschicken.compatibility.CompatibilityAPI;
+import kz.chesschicken.compatibility.api.InstanceIdentifier;
 import kz.chesschicken.compatibility.event.*;
+import kz.chesschicken.compatibility.stapi.utils.StationApiUtils;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.event.mod.InitEvent;
@@ -9,6 +11,7 @@ import net.modificationstation.stationapi.api.event.mod.PostInitEvent;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
+import net.modificationstation.stationapi.api.event.registry.MessageListenerRegistryEvent;
 import net.modificationstation.stationapi.api.registry.Identifier;
 
 public class EventCall {
@@ -57,4 +60,12 @@ public class EventCall {
         CompatibilityAPI.EVENT_BUS.post(new EventPostInit());
     }
 
+    @SuppressWarnings("unused")
+    @EventListener
+    public void registerMessageListeners(MessageListenerRegistryEvent messageListenerRegistry) {
+        CompatibilityAPI.EVENT_BUS.post(new EventNetwork());
+
+        for(InstanceIdentifier i : EventNetwork.LIST_TO_REGISTER.keySet())
+            messageListenerRegistry.registry.register(StationApiUtils.from(i), (playerBase, message) -> EventNetwork.LIST_TO_REGISTER.get(i).handlePacket(playerBase, StationApiUtils.degrade(i, message)));
+    }
 }

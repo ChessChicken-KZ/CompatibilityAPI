@@ -9,7 +9,7 @@ import kz.chesschicken.compatibility.api.InstanceIdentifier;
 import kz.chesschicken.compatibility.utils.UseCustomTileItem;
 import kz.chesschicken.compatibility.cla.utils.CursedLegacyApiUtils;
 import kz.chesschicken.compatibility.utils.UseMetaNamedTileItem;
-import kz.chesschicken.compatibility.utils.item.BlockMetaNamed;
+import kz.chesschicken.compatibility.api.item.BlockMetaNamed;
 import net.minecraft.block.BlockBase;
 import net.minecraft.item.Block;
 import net.minecraft.item.ItemBase;

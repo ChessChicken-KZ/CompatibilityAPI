@@ -1,6 +1,7 @@
 package kz.chesschicken.compatibility.cla.utils;
 
 import io.github.minecraftcursedlegacy.accessor.translations.AccessorTranslationStorage;
+import io.github.minecraftcursedlegacy.api.networking.PluginChannel;
 import io.github.minecraftcursedlegacy.api.registry.Id;
 import kz.chesschicken.compatibility.api.InstanceIdentifier;
 import lombok.SneakyThrows;
@@ -28,5 +29,10 @@ public class CursedLegacyApiUtils {
                 }
             });
         }
+    }
+
+    //FIXME: Create a way to send custom messages with CursedLegacyAPI.
+    public static PluginChannel buildPluginChannel() {
+        return null;
     }
 }

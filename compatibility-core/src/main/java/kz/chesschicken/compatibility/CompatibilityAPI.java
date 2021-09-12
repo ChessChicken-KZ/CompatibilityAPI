@@ -28,7 +28,6 @@ public class CompatibilityAPI implements PreLaunchEntrypoint {
             CURRENT_API = apiInterface;
     }
 
-
     public void onPreLaunch() {
         LOGGER.info("Searching for possible mods.");
         FabricLoader.getInstance().getEntrypointContainers("compatibility_mod", Object.class).forEach(oec -> {
@@ -53,7 +52,4 @@ public class CompatibilityAPI implements PreLaunchEntrypoint {
         else
             EVENT_BUS.register(entry);
     }
-
-
-
 }

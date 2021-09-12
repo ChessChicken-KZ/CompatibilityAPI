@@ -4,7 +4,8 @@
   "package": "kz.chesschicken.compatibility.stapi.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinCompatibilityAPI"
+    "MixinCompatibilityAPI",
+    "AccessorMessage"
   ],
   "server": [
   ],

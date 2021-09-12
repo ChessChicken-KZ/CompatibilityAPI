@@ -5,11 +5,11 @@ External API to handle some mods to work on every possible fabric API. Uses [BIN
 
 Currently supported features:
 
-|              API Names                | Init Events          |        Blocks        |         Items        |        Recipes       |       Textures       |        Entity        |
-|:-------------------------------------:|----------------------|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|
-|              StationAPI               | :white_check_mark:   |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  | :white_large_square: |
-|          Cursed-Legacy-API            | :white_check_mark:   |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  | :white_large_square: |
-| halotroop2288's API _(idk currently)_ | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: |
+|              API Names              |      Init Events     |        Blocks        |         Items        |        Recipes       |       Textures       |        Packets       |        Entity        |
+|:-----------------------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|
+|              StationAPI             |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  | :white_large_square: |
+|          Cursed-Legacy-API          |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  | :white_large_square: | :white_large_square: |
+| halotroop2288's API (idk currently) | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: |
 
 ## Setup
 For setup instructions, please refer to [BIN-example-mod page](https://github.com/calmilamsy/BIN-fabric-example-mod).
