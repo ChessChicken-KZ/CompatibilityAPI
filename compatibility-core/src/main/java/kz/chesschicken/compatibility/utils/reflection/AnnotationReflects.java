@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Great thing, but works only on java 1.8.
+ */
 public class AnnotationReflects {
 
     private static final Constructor<?> AnnotationInvocationHandler_constructor;
