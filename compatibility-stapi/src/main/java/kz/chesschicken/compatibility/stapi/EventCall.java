@@ -57,7 +57,7 @@ public class EventCall {
     @SuppressWarnings("unused")
     @EventListener
     public void requestPostInit(PostInitEvent event) {
-        CompatibilityAPI.EVENT_BUS.post(new EventPostInit());
+        CompatibilityAPI.EVENT_BUS.post(new EventPostInit(0x0));
     }
 
     @SuppressWarnings("unused")
@@ -66,6 +66,6 @@ public class EventCall {
         CompatibilityAPI.EVENT_BUS.post(new EventNetwork());
 
         for(InstanceIdentifier i : EventNetwork.LIST_TO_REGISTER.keySet())
-            messageListenerRegistry.registry.register(StationApiUtils.from(i), (playerBase, message) -> EventNetwork.LIST_TO_REGISTER.get(i).handlePacket(playerBase, StationApiUtils.degrade(i, message)));
+            messageListenerRegistry.registry.register(StationApiUtils.from(i), (playerBase, message) -> EventNetwork.LIST_TO_REGISTER.get(i).handlePacket(playerBase, StationApiUtils.simplify(i, message)));
     }
 }

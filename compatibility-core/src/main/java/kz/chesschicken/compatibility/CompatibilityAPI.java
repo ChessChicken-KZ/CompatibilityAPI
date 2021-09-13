@@ -35,9 +35,8 @@ public class CompatibilityAPI implements PreLaunchEntrypoint {
             registerModEvents(oec.getEntrypoint());
         });
 
-        if(CURRENT_API == null) {
+        if(CURRENT_API == null)
             throw new RuntimeException("No API found! Please install StAPI nor CursedLegacyApi nor Beta-Essentials...");
-        }
 
         EVENT_BUS.post(new EventPreInit());
     }

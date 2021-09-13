@@ -33,7 +33,7 @@ public class StationApiUtils {
         }
     }
 
-    public static PacketInstance degrade(InstanceIdentifier i, Message message) {
+    public static PacketInstance simplify(InstanceIdentifier i, Message message) {
         PacketInstance sample = new PacketInstance(((AccessorMessage)message).getID().toString()) {
             @Override
             public void handlePacket(PlayerBase playerBase, PacketInstance packetInstance) {

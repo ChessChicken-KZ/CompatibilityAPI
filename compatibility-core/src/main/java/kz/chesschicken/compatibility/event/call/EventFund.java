@@ -1,4 +1,4 @@
-package kz.chesschicken.compatibility.event.test;
+package kz.chesschicken.compatibility.event.call;
 
 import kz.chesschicken.compatibility.CompatibilityAPI;
 import kz.chesschicken.compatibility.event.EventBlock;

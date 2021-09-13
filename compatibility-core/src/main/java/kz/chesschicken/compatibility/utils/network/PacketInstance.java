@@ -28,5 +28,4 @@ public abstract class PacketInstance {
     }
 
     public abstract void handlePacket(PlayerBase playerBase, PacketInstance packetInstance);
-
 }
