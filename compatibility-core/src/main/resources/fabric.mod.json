@@ -20,10 +20,8 @@
   "environment": "*",
   "entrypoints": {
     "preLaunch": [
-      "kz.chesschicken.compatibility.CompatibilityAPI"
     ],
     "compatibility_mod": [
-      "kz.chesschicken.compatibility.event.test.EventFund"
     ]
   },
   "mixins": [

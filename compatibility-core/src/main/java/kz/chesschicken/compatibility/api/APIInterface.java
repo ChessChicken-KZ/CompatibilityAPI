@@ -1,5 +1,6 @@
 package kz.chesschicken.compatibility.api;
 
+import kz.chesschicken.compatibility.utils.network.PacketInstance;
 import net.minecraft.block.BlockBase;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
@@ -22,4 +23,6 @@ public interface APIInterface {
     int onBlockTextureInit(BlockBase blockBase, String s);
 
     int onItemTextureInit(ItemBase itemBase, String s);
+
+    void onPacketQueue(InstanceIdentifier identifier, PacketInstance instance);
 }

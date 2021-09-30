@@ -3,7 +3,6 @@ package kz.chesschicken.compatibility;
 import kz.chesschicken.compatibility.api.APIInterface;
 import kz.chesschicken.compatibility.event.EventPreInit;
 import net.fabricmc.loader.api.FabricLoader;
-import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 import net.mine_diver.unsafeevents.Event;
 import net.mine_diver.unsafeevents.EventBus;
 import org.apache.logging.log4j.LogManager;
@@ -13,7 +12,7 @@ import java.lang.reflect.Method;
 import java.util.function.Consumer;
 
 
-public class CompatibilityAPI implements PreLaunchEntrypoint {
+public class CompatibilityAPI {
     private static APIInterface CURRENT_API = null;
     public static final Logger LOGGER = LogManager.getLogger("CompatibilityAPI");
     public static final EventBus EVENT_BUS = new EventBus();
@@ -28,10 +27,10 @@ public class CompatibilityAPI implements PreLaunchEntrypoint {
             CURRENT_API = apiInterface;
     }
 
-    public void onPreLaunch() {
+    public static void runAPI() {
         LOGGER.info("Searching for possible mods.");
         FabricLoader.getInstance().getEntrypointContainers("compatibility_mod", Object.class).forEach(oec -> {
-            LOGGER.info("Found entrypoint(s) inside " + oec.getProvider().getMetadata().getId() + " mod.");
+            LOGGER.info("Found entrypoint: " + oec.getEntrypoint().getClass().getCanonicalName() + ".");
             registerModEvents(oec.getEntrypoint());
         });
 
@@ -41,7 +40,7 @@ public class CompatibilityAPI implements PreLaunchEntrypoint {
         EVENT_BUS.post(new EventPreInit());
     }
 
-    private void registerModEvents(Object entry) {
+    private static void registerModEvents(Object entry) {
         if (entry.getClass() == Class.class)
             EVENT_BUS.register((Class<?>) entry);
         else if (entry instanceof Consumer)

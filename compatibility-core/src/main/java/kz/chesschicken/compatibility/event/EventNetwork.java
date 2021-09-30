@@ -8,10 +8,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EventNetwork extends Event {
-    public static Map<InstanceIdentifier, PacketInstance> LIST_TO_REGISTER = new HashMap<>();
+    public static Map<InstanceIdentifier, Class<? extends PacketInstance>> LIST_TO_REGISTER = new HashMap<>();
 
-    public void register(PacketInstance i) {
-        LIST_TO_REGISTER.put(i.getIdentifier(), i);
+    public static void queuePacket(PacketInstance instance) {
+        if(LIST_TO_REGISTER.containsKey(instance.getIdentifier())) {
+            //FIXME: Add
+        }
+    }
+
+    public void register(InstanceIdentifier identifier, Class<? extends PacketInstance> i) {
+        LIST_TO_REGISTER.put(identifier, i);
     }
 
     @Override

@@ -8,13 +8,12 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(CompatibilityAPI.class)
-public class MixinCompatibilityAPI {
-    @Inject(method = "onPreLaunch", at = @At("HEAD"), remap = false)
+@Mixin(net.modificationstation.stationapi.api.StationAPI.class)
+public class MixinStationAPI {
+    @Inject(method = "onPreLaunch", at = @At("TAIL"), remap = false)
     private void setCustomAPI(CallbackInfo ci) {
-        if(FabricLoader.getInstance().isModLoaded("stationapi")) {
-            CompatibilityAPI.LOGGER.info("Using StationAPI as an API.");
-            CompatibilityAPI.SET_API(new StationAPI());
-        }
+        CompatibilityAPI.LOGGER.info("Using StationAPI as an API.");
+        CompatibilityAPI.SET_API(new StationAPI());
+        CompatibilityAPI.runAPI();
     }
 }

@@ -21,6 +21,9 @@
   "entrypoints": {
     "init": [
       "kz.chesschicken.compatibility.cla.EventCall"
+    ],
+    "preLaunch": [
+      "kz.chesschicken.compatibility.cla.APICall"
     ]
   },
   "mixins": [

@@ -7,6 +7,7 @@ import kz.chesschicken.compatibility.utils.UseCustomTileItem;
 import kz.chesschicken.compatibility.utils.UseMetaNamedTileItem;
 import kz.chesschicken.compatibility.utils.network.PacketInstance;
 import kz.chesschicken.compatibility.utils.reflection.AnnotationReflects;
+import lombok.SneakyThrows;
 import net.minecraft.entity.player.PlayerBase;
 import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.block.HasMetaNamedBlockItem;
@@ -35,9 +36,10 @@ public class StationApiUtils {
 
     public static PacketInstance simplify(InstanceIdentifier i, Message message) {
         PacketInstance sample = new PacketInstance(((AccessorMessage)message).getID().toString()) {
+            @SneakyThrows
             @Override
             public void handlePacket(PlayerBase playerBase, PacketInstance packetInstance) {
-                EventNetwork.LIST_TO_REGISTER.get(i).handlePacket(playerBase, packetInstance);
+                EventNetwork.LIST_TO_REGISTER.get(i).getConstructor(String.class).newInstance(i.toString()).handlePacket(playerBase, packetInstance);
             }
         };
         sample.bytes = message.bytes;

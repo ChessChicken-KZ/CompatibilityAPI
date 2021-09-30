@@ -4,7 +4,9 @@ import kz.chesschicken.compatibility.CompatibilityAPI;
 import kz.chesschicken.compatibility.api.InstanceIdentifier;
 import kz.chesschicken.compatibility.event.*;
 import kz.chesschicken.compatibility.stapi.utils.StationApiUtils;
+import lombok.SneakyThrows;
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.entity.player.PlayerBase;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.event.mod.InitEvent;
 import net.modificationstation.stationapi.api.event.mod.PostInitEvent;
@@ -12,7 +14,11 @@ import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.event.registry.MessageListenerRegistryEvent;
+import net.modificationstation.stationapi.api.packet.Message;
 import net.modificationstation.stationapi.api.registry.Identifier;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.function.BiConsumer;
 
 public class EventCall {
 
@@ -66,6 +72,12 @@ public class EventCall {
         CompatibilityAPI.EVENT_BUS.post(new EventNetwork());
 
         for(InstanceIdentifier i : EventNetwork.LIST_TO_REGISTER.keySet())
-            messageListenerRegistry.registry.register(StationApiUtils.from(i), (playerBase, message) -> EventNetwork.LIST_TO_REGISTER.get(i).handlePacket(playerBase, StationApiUtils.simplify(i, message)));
+            messageListenerRegistry.registry.register(StationApiUtils.from(i), new BiConsumer<PlayerBase, Message>() {
+                @SneakyThrows
+                @Override
+                public void accept(PlayerBase playerBase, Message message) {
+                    EventNetwork.LIST_TO_REGISTER.get(i).getConstructor(String.class).newInstance(i.toString()).handlePacket(playerBase, StationApiUtils.simplify(i, message));
+                }
+            });
     }
 }
