@@ -8,8 +8,8 @@ Currently supported features:
 |     API Names     |      Init Events     |        Blocks        |         Items        |        Recipes       |       Textures       |        Packets       |        Entity        |
 |:-----------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|
 |     StationAPI    |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  | :white_large_square: |
-| Cursed-Legacy-API |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  | :white_large_square: | :white_large_square: |
-|  Beta-Essentials  | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: |
+| Cursed-Legacy-API |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  |  :white_check_mark:  | :white_check_mark: | :white_large_square: |
+|  Beta-Essentials (Abandoned)  | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: | :white_large_square: |
 
 ## Setup
 For setup instructions, please refer to [BIN-example-mod page](https://github.com/calmilamsy/BIN-fabric-example-mod).

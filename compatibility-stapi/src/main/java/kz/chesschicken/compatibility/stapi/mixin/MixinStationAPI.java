@@ -2,7 +2,6 @@ package kz.chesschicken.compatibility.stapi.mixin;
 
 import kz.chesschicken.compatibility.CompatibilityAPI;
 import kz.chesschicken.compatibility.stapi.api.StationAPI;
-import net.fabricmc.loader.api.FabricLoader;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
