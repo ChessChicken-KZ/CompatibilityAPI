@@ -19,9 +19,9 @@ public class CompatibilityAPI {
     public static final Logger LOGGER = LogManager.getLogger("CompatibilityAPI");
     public static final EventBus EVENT_BUS = new EventBus();
 
+    //TODO: Should set API in a different way.
     public static void setAPI$(APIInterface apiInterface) {
-        /* StationAPI is based. */
-        if(API == null || apiInterface.getID().equals("stationapi"))
+        if(API == null)
             API = apiInterface;
     }
 

@@ -19,7 +19,7 @@ public interface APIInterface {
 
     void initSmeltingRecipe(ItemInstance result, ItemInstance ingredients);
 
-    int initBlockTexture(BlockBase blockBase, String s);
+    int initBlockTexture(BlockBase blockBase, int meta, String s);
 
-    int initItemTexture(ItemBase itemBase, String s);
+    int initItemTexture(ItemBase itemBase, int meta, String s);
 }

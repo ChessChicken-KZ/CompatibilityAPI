@@ -18,7 +18,7 @@ public class StationAPI implements APIInterface {
 
     @Override
     public String getID() {
-        return "stationapi";
+        return net.modificationstation.stationapi.api.StationAPI.MODID.toString();
     }
 
     @Override
@@ -55,14 +55,14 @@ public class StationAPI implements APIInterface {
     }
 
     @Override
-    public int initBlockTexture(BlockBase blockBase, String s) {
+    public int initBlockTexture(BlockBase blockBase, int meta, String s) {
         int i = Atlases.getStationTerrain().addTexture(s).index;
         blockBase.texture = i;
         return i;
     }
 
     @Override
-    public int initItemTexture(ItemBase itemBase, String s) {
+    public int initItemTexture(ItemBase itemBase, int meta, String s) {
         int i = Atlases.getStationGuiItems().addTexture(s).index;
         itemBase.setTexturePosition(i);
         return i;

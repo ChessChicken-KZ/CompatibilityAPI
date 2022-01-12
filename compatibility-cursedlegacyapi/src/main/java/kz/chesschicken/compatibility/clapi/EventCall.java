@@ -23,9 +23,9 @@ public class EventCall implements ModInitializer {
 
         CompatibilityAPI.EVENT_BUS.post(new EventNetwork());
 
-        for(ModContainer modContainer : FabricLoader.getInstance().getAllMods())
-            if(modContainer.getMetadata().containsCustomValue("compatibility:lang_file"))
-                CursedLegacyApiUtils.loadLangFile(modContainer.getMetadata().getId(), modContainer.getMetadata().getCustomValue("compatibility:lang_file").getAsString());
+        for(ModContainer mod : FabricLoader.getInstance().getAllMods())
+            if(mod.getMetadata().containsCustomValue("compatibility:lang_file"))
+                CursedLegacyApiUtils.loadLangFile(mod.getMetadata().getId(), mod.getMetadata().getCustomValue("compatibility:lang_file").getAsString());
 
         CompatibilityAPI.EVENT_BUS.post(new EventPostInit(0x0));
     }

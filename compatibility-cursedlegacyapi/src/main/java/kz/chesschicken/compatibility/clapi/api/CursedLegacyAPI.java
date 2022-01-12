@@ -15,9 +15,6 @@ import net.minecraft.item.Block;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.recipe.SmeltingRecipeRegistry;
-import paulevs.corelib.model.Model;
-import paulevs.corelib.model.prefab.FullCubeModel;
-import paulevs.corelib.registry.ModelRegistry;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.function.IntFunction;
@@ -67,24 +64,19 @@ public class CursedLegacyAPI implements APIInterface {
         SmeltingRecipeRegistry.getInstance().addSmeltingRecipe(result.itemId, ingredients);
     }
 
-    /**
-     * Highly not recommended, still W.I.P.
-     * Try using other methods, like automatic texturing from CLAPI.
-     * @param blockBase BlockBase instance.
-     * @param s Texture path.
-     * @return -1
-     */
-    @Deprecated
     @Override
-    public int initBlockTexture(BlockBase blockBase, String s) {
-        Model model = new FullCubeModel(s);
-        ModelRegistry.addTileModel(blockBase, model);
-        ModelRegistry.addItemModel(ItemBase.byId[blockBase.id], model);
-        return -1;
+    public int initBlockTexture(BlockBase blockBase, int meta, String s) {
+        /*
+         * TODO: CHECK THIS LATER!
+         * Too unsure, because the code refers to item atlas.
+         * Is there any way to register block sprite in similar way?
+         */
+        return AtlasMap.registerSprite(new ItemInstance(blockBase, 1, meta), s);
     }
 
     @Override
-    public int initItemTexture(ItemBase itemBase, String s) {
-        return AtlasMap.registerSprite(itemBase.id, 0, s);
+    public int initItemTexture(ItemBase itemBase, int meta, String s) {
+        return AtlasMap.registerSprite(itemBase.id, meta, s);
     }
+
 }

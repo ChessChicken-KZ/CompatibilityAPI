@@ -7,12 +7,12 @@ import net.minecraft.item.ItemBase;
 
 public class EventTexture extends Event {
 
-    public int addBlockTexture(BlockBase instance, String s) {
-        return CompatibilityAPI.getAPI().initBlockTexture(instance, s);
+    public int addBlockTexture(BlockBase instance, int meta, String s) {
+        return CompatibilityAPI.getAPI().initBlockTexture(instance, meta, s);
     }
 
-    public int addItemTexture(ItemBase instance, String s) {
-        return CompatibilityAPI.getAPI().initItemTexture(instance, s);
+    public int addItemTexture(ItemBase instance, int meta, String s) {
+        return CompatibilityAPI.getAPI().initItemTexture(instance, meta, s);
     }
 
     @Override
