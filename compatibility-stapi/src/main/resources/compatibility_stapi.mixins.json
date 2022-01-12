@@ -14,5 +14,5 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "plugin": "kz.chesschicken.compatibility.utils.MixinLoaderAdaptor"
+  "plugin": "kz.chesschicken.compatibility.utils.MixinLoaderAdapter"
 }

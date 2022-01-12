@@ -15,6 +15,9 @@ import net.minecraft.item.Block;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.recipe.SmeltingRecipeRegistry;
+import paulevs.corelib.model.Model;
+import paulevs.corelib.model.prefab.FullCubeModel;
+import paulevs.corelib.registry.ModelRegistry;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.function.IntFunction;
@@ -66,12 +69,10 @@ public class CursedLegacyAPI implements APIInterface {
 
     @Override
     public int initBlockTexture(BlockBase blockBase, int meta, String s) {
-        /*
-         * TODO: CHECK THIS LATER!
-         * Too unsure, because the code refers to item atlas.
-         * Is there any way to register block sprite in similar way?
-         */
-        return AtlasMap.registerSprite(new ItemInstance(blockBase, 1, meta), s);
+        Model model = new FullCubeModel(s);
+        ModelRegistry.addTileModel(blockBase, meta, model);
+        ModelRegistry.addItemModel(ItemBase.byId[blockBase.id], meta, model);
+        return blockBase.texture;
     }
 
     @Override

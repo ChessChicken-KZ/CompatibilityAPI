@@ -17,6 +17,7 @@ public class CursedLegacyApiUtils {
     }
 
     @SneakyThrows
+    @SuppressWarnings("OptionalGetWithoutIsPresent")
     public static void loadLangFile(String modid, String lang) {
         File q = new File(FabricLoader.getInstance().getModContainer(modid).get().getRootPath().toFile(), "/assets/" + modid + "/lang/" + lang + ".lang");
         if(q.exists()) {
