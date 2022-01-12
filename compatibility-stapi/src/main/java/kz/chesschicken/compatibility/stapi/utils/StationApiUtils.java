@@ -1,10 +1,10 @@
 package kz.chesschicken.compatibility.stapi.utils;
 
 import kz.chesschicken.compatibility.api.InstanceIdentifier;
-import kz.chesschicken.compatibility.utils.InitAndApply;
-import kz.chesschicken.compatibility.utils.UseCustomTileItem;
-import kz.chesschicken.compatibility.utils.UseMetaNamedTileItem;
-import kz.chesschicken.compatibility.utils.reflection.AnnotationReflects;
+import kz.chesschicken.compatibility.utils.block.UseCustomTileItem;
+import kz.chesschicken.compatibility.utils.block.UseMetaNamedTileItem;
+import kz.chesschicken.compatibility.utils.cursedjava.AnnotationReflects;
+import kz.chesschicken.compatibility.utils.cursedjava.InitAndApply;
 import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.block.HasMetaNamedBlockItem;
 import net.modificationstation.stationapi.api.registry.Identifier;

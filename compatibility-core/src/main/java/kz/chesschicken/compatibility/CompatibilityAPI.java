@@ -2,7 +2,6 @@ package kz.chesschicken.compatibility;
 
 import kz.chesschicken.compatibility.api.APIInterface;
 import kz.chesschicken.compatibility.event.EventPreInit;
-import kz.chesschicken.compatibility.utils.ASCIIString;
 import lombok.Getter;
 import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.Event;
@@ -16,23 +15,19 @@ import java.util.function.Consumer;
 
 
 public class CompatibilityAPI {
-    @Getter private static APIInterface API = null;
     public static final Logger LOGGER = LogManager.getLogger("CompatibilityAPI");
+
+    @Getter private static APIInterface API = null;
     @Getter private static EventBus EventBus;
 
-    /*
-     * TODO: LOOK HERE! FIX TILL FEBRUARY PLEASE ALIMA.
-     * Should set API in a different way.
-     * Still.
-     */
     public static void init(APIInterface apiInterface) {
+        CompatibilityAPI.LOGGER.info("Using {} as an providing interface API.", apiInterface.getID());
         API = apiInterface;
         EventBus = new EventBus();
-        runAPI();
-        new ASCIIString((byte) 0xff00, (byte) 4, (byte) 3);
+        searchAndSetupMods();
     }
 
-    static void runAPI() {
+    static void searchAndSetupMods() {
         LOGGER.info("Searching for possible entrypoints of \"compatibility_mod\".");
         FabricLoader.getInstance().getEntrypointContainers("compatibility_mod", Object.class).forEach(oec -> {
             LOGGER.info("Found entrypoint, registering. [ {} ]", oec.getEntrypoint().getClass().getCanonicalName());

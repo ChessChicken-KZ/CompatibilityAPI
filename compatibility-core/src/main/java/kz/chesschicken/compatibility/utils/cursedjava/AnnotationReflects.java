@@ -1,4 +1,4 @@
-package kz.chesschicken.compatibility.utils.reflection;
+package kz.chesschicken.compatibility.utils.cursedjava;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;

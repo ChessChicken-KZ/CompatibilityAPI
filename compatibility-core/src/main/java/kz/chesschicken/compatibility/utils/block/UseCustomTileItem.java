@@ -1,4 +1,6 @@
-package kz.chesschicken.compatibility.utils;
+package kz.chesschicken.compatibility.utils.block;
+
+import net.minecraft.item.Block;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,6 +9,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface UseMetaNamedTileItem {
-    String value() default "";
+public @interface UseCustomTileItem {
+    Class<? extends Block> value();
 }

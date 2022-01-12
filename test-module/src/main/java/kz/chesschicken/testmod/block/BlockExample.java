@@ -7,9 +7,4 @@ public class BlockExample extends BlockBase {
     public BlockExample(int id) {
         super(id, Material.WOOD);
     }
-
-    @Override
-    public int getTextureForSide(int side, int meta) {
-        return 6;
-    }
 }

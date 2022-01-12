@@ -10,7 +10,6 @@ public class APICall implements PreLaunchEntrypoint {
     @Override
     public void onPreLaunch() {
         if(FabricLoader.getInstance().isModLoaded("api")) {
-            CompatibilityAPI.LOGGER.info("Using CursedFabricAPI as an API.");
             CompatibilityAPI.init(new CursedLegacyAPI());
         }
     }

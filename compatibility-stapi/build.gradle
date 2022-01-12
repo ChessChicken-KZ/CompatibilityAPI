@@ -5,9 +5,14 @@ version = project.mod_version
 group = project.maven_group
 
 dependencies {
-    implementation "com.github.mineLdiver:expressions:2fa66db"
 
-    modImplementation 'com.github.ModificationStation:StationAPI:d6f9496e93'
+    implementation "com.github.jhalterman:typetools:${project.typetools_version}"
+    implementation "com.github.mineLdiver:expressions:${project.expressions_version}"
+    implementation "it.unimi.dsi:fastutil:${project.fastutil_version}"
+    //noinspection GradlePackageUpdate
+    implementation "com.github.ben-manes.caffeine:caffeine:${project.caffeine_version}"
+
+    modImplementation 'com.github.ModificationStation:StationAPI:86dba09'
 
     implementation project(':compatibility-core')
 }

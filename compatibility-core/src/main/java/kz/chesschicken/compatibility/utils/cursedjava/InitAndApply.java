@@ -1,4 +1,4 @@
-package kz.chesschicken.compatibility.utils;
+package kz.chesschicken.compatibility.utils.cursedjava;
 
 import org.jetbrains.annotations.NotNull;
 
