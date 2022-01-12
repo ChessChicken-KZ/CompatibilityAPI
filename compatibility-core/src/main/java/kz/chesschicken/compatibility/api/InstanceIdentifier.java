@@ -7,8 +7,8 @@ import java.util.Objects;
 public class InstanceIdentifier {
     private final String mod;
     private final String object;
-    private InstanceIdentifier(String s, String s1)
-    {
+
+    InstanceIdentifier(String s, String s1) {
         this.mod = s;
         this.object = s1;
     }

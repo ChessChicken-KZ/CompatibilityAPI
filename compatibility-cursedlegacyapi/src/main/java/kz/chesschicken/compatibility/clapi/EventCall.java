@@ -10,23 +10,23 @@ import net.fabricmc.loader.api.ModContainer;
 public class EventCall implements ModInitializer {
     @Override
     public void onInitialize() {
-        CompatibilityAPI.EVENT_BUS.post(new EventInit());
+        CompatibilityAPI.getEventBus().post(new EventInit());
 
-        CompatibilityAPI.EVENT_BUS.post(new EventBlock());
-        CompatibilityAPI.EVENT_BUS.post(new EventItem());
+        CompatibilityAPI.getEventBus().post(new EventBlock());
+        CompatibilityAPI.getEventBus().post(new EventItem());
 
-        CompatibilityAPI.EVENT_BUS.post(new EventTexture());
+        CompatibilityAPI.getEventBus().post(new EventTexture());
 
-        CompatibilityAPI.EVENT_BUS.post(new EventShapedRecipe());
-        CompatibilityAPI.EVENT_BUS.post(new EventShapelessRecipe());
-        CompatibilityAPI.EVENT_BUS.post(new EventSmeltingRecipe());
+        CompatibilityAPI.getEventBus().post(new EventShapedRecipe());
+        CompatibilityAPI.getEventBus().post(new EventShapelessRecipe());
+        CompatibilityAPI.getEventBus().post(new EventSmeltingRecipe());
 
-        CompatibilityAPI.EVENT_BUS.post(new EventNetwork());
+        CompatibilityAPI.getEventBus().post(new EventNetwork());
 
         for(ModContainer mod : FabricLoader.getInstance().getAllMods())
             if(mod.getMetadata().containsCustomValue("compatibility:lang_file"))
                 CursedLegacyApiUtils.loadLangFile(mod.getMetadata().getId(), mod.getMetadata().getCustomValue("compatibility:lang_file").getAsString());
 
-        CompatibilityAPI.EVENT_BUS.post(new EventPostInit(0x0));
+        CompatibilityAPI.getEventBus().post(new EventPostInit(0x0));
     }
 }

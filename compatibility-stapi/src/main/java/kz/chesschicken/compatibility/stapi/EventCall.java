@@ -17,13 +17,13 @@ public class EventCall {
     @SuppressWarnings("unused")
     @EventListener
     public void registerBlocks(BlockRegistryEvent event) {
-        CompatibilityAPI.EVENT_BUS.post(new EventBlock());
+        CompatibilityAPI.getEventBus().post(new EventBlock());
     }
 
     @SuppressWarnings("unused")
     @EventListener
     public void registerItems(ItemRegistryEvent event) {
-        CompatibilityAPI.EVENT_BUS.post(new EventItem());
+        CompatibilityAPI.getEventBus().post(new EventItem());
     }
 
     @SuppressWarnings("unused")
@@ -31,36 +31,36 @@ public class EventCall {
     public void registerRecipes(RecipeRegisterEvent event) {
         Identifier type = event.recipeId;
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type())
-            CompatibilityAPI.EVENT_BUS.post(new EventShapedRecipe());
+            CompatibilityAPI.getEventBus().post(new EventShapedRecipe());
 
         if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type())
-            CompatibilityAPI.EVENT_BUS.post(new EventShapelessRecipe());
+            CompatibilityAPI.getEventBus().post(new EventShapelessRecipe());
 
         if (type == RecipeRegisterEvent.Vanilla.SMELTING.type())
-            CompatibilityAPI.EVENT_BUS.post(new EventSmeltingRecipe());
+            CompatibilityAPI.getEventBus().post(new EventSmeltingRecipe());
     }
 
     @SuppressWarnings("unused")
     @EventListener
     public void registerTextures(TextureRegisterEvent event) {
-        CompatibilityAPI.EVENT_BUS.post(new EventTexture());
+        CompatibilityAPI.getEventBus().post(new EventTexture());
     }
 
     @SuppressWarnings("unused")
     @EventListener
     public void requestInit(InitEvent event) {
-        CompatibilityAPI.EVENT_BUS.post(new EventInit());
+        CompatibilityAPI.getEventBus().post(new EventInit());
     }
 
     @SuppressWarnings("unused")
     @EventListener
     public void requestPostInit(PostInitEvent event) {
-        CompatibilityAPI.EVENT_BUS.post(new EventPostInit(0x0));
+        CompatibilityAPI.getEventBus().post(new EventPostInit(0x0));
     }
 
     @SuppressWarnings("unused")
     @EventListener
     public void registerMessageListeners(MessageListenerRegistryEvent messageListenerRegistry) {
-        CompatibilityAPI.EVENT_BUS.post(new EventNetwork());
+        CompatibilityAPI.getEventBus().post(new EventNetwork());
     }
 }

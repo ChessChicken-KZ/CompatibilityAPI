@@ -2,6 +2,7 @@ package kz.chesschicken.compatibility;
 
 import kz.chesschicken.compatibility.api.APIInterface;
 import kz.chesschicken.compatibility.event.EventPreInit;
+import kz.chesschicken.compatibility.utils.ASCIIString;
 import lombok.Getter;
 import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.Event;
@@ -17,36 +18,39 @@ import java.util.function.Consumer;
 public class CompatibilityAPI {
     @Getter private static APIInterface API = null;
     public static final Logger LOGGER = LogManager.getLogger("CompatibilityAPI");
-    public static final EventBus EVENT_BUS = new EventBus();
+    @Getter private static EventBus EventBus;
 
-    //TODO: Should set API in a different way.
-    public static void setAPI$(APIInterface apiInterface) {
-        if(API == null)
-            API = apiInterface;
+    /*
+     * TODO: LOOK HERE! FIX TILL FEBRUARY PLEASE ALIMA.
+     * Should set API in a different way.
+     * Still.
+     */
+    public static void init(APIInterface apiInterface) {
+        API = apiInterface;
+        EventBus = new EventBus();
+        runAPI();
+        new ASCIIString((byte) 0xff00, (byte) 4, (byte) 3);
     }
 
-    public static void runAPI() {
-        LOGGER.info("Searching for possible mods.");
+    static void runAPI() {
+        LOGGER.info("Searching for possible entrypoints of \"compatibility_mod\".");
         FabricLoader.getInstance().getEntrypointContainers("compatibility_mod", Object.class).forEach(oec -> {
-            LOGGER.info("Found entrypoint: " + oec.getEntrypoint().getClass().getCanonicalName() + ".");
+            LOGGER.info("Found entrypoint, registering. [ {} ]", oec.getEntrypoint().getClass().getCanonicalName());
             registerModEvents(oec.getEntrypoint());
         });
 
-        if(API == null)
-            throw new RuntimeException("No API found! Please install StationAPI nor CursedLegacy-API...");
-
-        EVENT_BUS.post(new EventPreInit());
+        EventBus.post(new EventPreInit());
     }
 
     static void registerModEvents(@NotNull Object entry) {
         if (entry.getClass() == Class.class)
-            EVENT_BUS.register((Class<?>) entry);
+            EventBus.register((Class<?>) entry);
         else if (entry instanceof Consumer)
             //noinspection unchecked
-            EVENT_BUS.register((Consumer<? extends Event>) entry);
+            EventBus.register((Consumer<? extends Event>) entry);
         else if (entry.getClass() == Method.class)
-            EVENT_BUS.register((Method) entry);
+            EventBus.register((Method) entry);
         else
-            EVENT_BUS.register(entry);
+            EventBus.register(entry);
     }
 }
