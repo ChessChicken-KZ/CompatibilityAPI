@@ -9,7 +9,7 @@ import java.util.function.IntFunction;
 
 public class EventBlock extends Event {
     public BlockBase register(InstanceIdentifier identifier, IntFunction<BlockBase> instance) {
-        return CompatibilityAPI.GET_API().onBlockInit(identifier, instance);
+        return CompatibilityAPI.getAPI().initBlock(identifier, instance);
     }
 
     @Override

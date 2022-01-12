@@ -4,8 +4,8 @@
   "package": "kz.chesschicken.compatibility.stapi.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "AccessorMessage",
-    "MixinStationAPI"
+    "MixinStationAPI",
+    "api.MixinBlockMetaNamed"
   ],
   "server": [
   ],
@@ -13,5 +13,6 @@
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "plugin": "kz.chesschicken.compatibility.utils.MixinLoaderAdaptor"
 }

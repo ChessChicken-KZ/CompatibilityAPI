@@ -7,7 +7,7 @@ import net.minecraft.item.ItemInstance;
 public class EventSmeltingRecipe extends Event {
 
     public void register(ItemInstance result, ItemInstance ingredients) {
-        CompatibilityAPI.GET_API().onSmeltingRecipeInit(result, ingredients);
+        CompatibilityAPI.getAPI().initSmeltingRecipe(result, ingredients);
     }
 
     @Override

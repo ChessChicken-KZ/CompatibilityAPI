@@ -2,29 +2,27 @@ package kz.chesschicken.compatibility;
 
 import kz.chesschicken.compatibility.api.APIInterface;
 import kz.chesschicken.compatibility.event.EventPreInit;
+import lombok.Getter;
 import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.Event;
 import net.mine_diver.unsafeevents.EventBus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Method;
 import java.util.function.Consumer;
 
 
 public class CompatibilityAPI {
-    private static APIInterface CURRENT_API = null;
+    @Getter private static APIInterface API = null;
     public static final Logger LOGGER = LogManager.getLogger("CompatibilityAPI");
     public static final EventBus EVENT_BUS = new EventBus();
 
-    public static APIInterface GET_API() {
-        return CURRENT_API;
-    }
-
-    public static void SET_API(APIInterface apiInterface) {
+    public static void setAPI$(APIInterface apiInterface) {
         /* StationAPI is based. */
-        if(CURRENT_API == null || apiInterface.getID().equals("stationapi"))
-            CURRENT_API = apiInterface;
+        if(API == null || apiInterface.getID().equals("stationapi"))
+            API = apiInterface;
     }
 
     public static void runAPI() {
@@ -34,16 +32,17 @@ public class CompatibilityAPI {
             registerModEvents(oec.getEntrypoint());
         });
 
-        if(CURRENT_API == null)
-            throw new RuntimeException("No API found! Please install StAPI nor CursedLegacyApi nor Beta-Essentials...");
+        if(API == null)
+            throw new RuntimeException("No API found! Please install StationAPI nor CursedLegacy-API...");
 
         EVENT_BUS.post(new EventPreInit());
     }
 
-    private static void registerModEvents(Object entry) {
+    static void registerModEvents(@NotNull Object entry) {
         if (entry.getClass() == Class.class)
             EVENT_BUS.register((Class<?>) entry);
         else if (entry instanceof Consumer)
+            //noinspection unchecked
             EVENT_BUS.register((Consumer<? extends Event>) entry);
         else if (entry.getClass() == Method.class)
             EVENT_BUS.register((Method) entry);

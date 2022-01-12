@@ -12,7 +12,7 @@ public class MixinStationAPI {
     @Inject(method = "onPreLaunch", at = @At("TAIL"), remap = false)
     private void setCustomAPI(CallbackInfo ci) {
         CompatibilityAPI.LOGGER.info("Using StationAPI as an API.");
-        CompatibilityAPI.SET_API(new StationAPI());
+        CompatibilityAPI.setAPI$(new StationAPI());
         CompatibilityAPI.runAPI();
     }
 }

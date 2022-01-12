@@ -7,7 +7,7 @@ import net.minecraft.item.ItemInstance;
 public class EventShapelessRecipe extends Event {
 
     public void register(ItemInstance result, Object[] ingredients) {
-        CompatibilityAPI.GET_API().onShapelessRecipeInit(result, ingredients);
+        CompatibilityAPI.getAPI().initShapelessRecipe(result, ingredients);
     }
 
     @Override

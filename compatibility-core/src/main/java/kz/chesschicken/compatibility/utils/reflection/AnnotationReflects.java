@@ -22,7 +22,7 @@ public class AnnotationReflects {
     private static final Method Atomic_casAnnotationData;
     private static final Class<?> Atomic_class;
 
-    static{
+    static {
         try {
             Class<?> AnnotationInvocationHandler_class = Class.forName("sun.reflect.annotation.AnnotationInvocationHandler");
             AnnotationInvocationHandler_constructor = AnnotationInvocationHandler_class.getDeclaredConstructor(Class.class, Map.class);

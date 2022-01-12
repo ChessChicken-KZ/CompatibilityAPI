@@ -1,7 +1,7 @@
-package kz.chesschicken.compatibility.cla;
+package kz.chesschicken.compatibility.clapi;
 
 import kz.chesschicken.compatibility.CompatibilityAPI;
-import kz.chesschicken.compatibility.cla.api.CursedLegacyAPI;
+import kz.chesschicken.compatibility.clapi.api.CursedLegacyAPI;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 
@@ -11,7 +11,7 @@ public class APICall implements PreLaunchEntrypoint {
     public void onPreLaunch() {
         if(FabricLoader.getInstance().isModLoaded("api")) {
             CompatibilityAPI.LOGGER.info("Using CursedFabricAPI as an API.");
-            CompatibilityAPI.SET_API(new CursedLegacyAPI());
+            CompatibilityAPI.setAPI$(new CursedLegacyAPI());
         }
     }
 }

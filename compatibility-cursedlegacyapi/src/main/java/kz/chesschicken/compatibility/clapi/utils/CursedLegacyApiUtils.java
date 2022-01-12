@@ -1,4 +1,4 @@
-package kz.chesschicken.compatibility.cla.utils;
+package kz.chesschicken.compatibility.clapi.utils;
 
 import io.github.minecraftcursedlegacy.accessor.translations.AccessorTranslationStorage;
 import io.github.minecraftcursedlegacy.api.registry.Id;

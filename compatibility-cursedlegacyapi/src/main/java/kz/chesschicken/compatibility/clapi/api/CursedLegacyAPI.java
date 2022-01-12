@@ -1,4 +1,4 @@
-package kz.chesschicken.compatibility.cla.api;
+package kz.chesschicken.compatibility.clapi.api;
 
 import io.github.minecraftcursedlegacy.api.client.AtlasMap;
 import io.github.minecraftcursedlegacy.api.recipe.Recipes;
@@ -7,7 +7,7 @@ import io.github.minecraftcursedlegacy.api.registry.TileItems;
 import kz.chesschicken.compatibility.api.APIInterface;
 import kz.chesschicken.compatibility.api.InstanceIdentifier;
 import kz.chesschicken.compatibility.api.item.BlockMetaNamed;
-import kz.chesschicken.compatibility.cla.utils.CursedLegacyApiUtils;
+import kz.chesschicken.compatibility.clapi.utils.CursedLegacyApiUtils;
 import kz.chesschicken.compatibility.utils.UseCustomTileItem;
 import kz.chesschicken.compatibility.utils.UseMetaNamedTileItem;
 import net.minecraft.block.BlockBase;
@@ -30,7 +30,7 @@ public class CursedLegacyAPI implements APIInterface {
     }
 
     @Override
-    public BlockBase onBlockInit(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase) {
+    public BlockBase initBlock(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase) {
         BlockBase q = Registries.TILE.register(CursedLegacyApiUtils.from(identifier), blockBase);
         if(q.getClass().isAnnotationPresent(UseCustomTileItem.class))
             TileItems.registerTileItem(CursedLegacyApiUtils.from(identifier), q, value -> {
@@ -48,35 +48,35 @@ public class CursedLegacyAPI implements APIInterface {
     }
 
     @Override
-    public ItemBase onItemInit(InstanceIdentifier identifier, IntFunction<ItemBase> itemBase) {
+    public ItemBase initItem(InstanceIdentifier identifier, IntFunction<ItemBase> itemBase) {
         return Registries.ITEM_TYPE.register(CursedLegacyApiUtils.from(identifier), itemBase);
     }
 
     @Override
-    public void onShapedRecipeInit(ItemInstance result, Object[] ingredients) {
+    public void initShapedRecipe(ItemInstance result, Object[] ingredients) {
         Recipes.addShapedRecipe(result, ingredients);
     }
 
     @Override
-    public void onShapelessRecipeInit(ItemInstance result, Object[] ingredients) {
+    public void initShapelessRecipe(ItemInstance result, Object[] ingredients) {
         Recipes.addShapelessRecipe(result, ingredients);
     }
 
     @Override
-    public void onSmeltingRecipeInit(ItemInstance result, ItemInstance ingredients) {
+    public void initSmeltingRecipe(ItemInstance result, ItemInstance ingredients) {
         SmeltingRecipeRegistry.getInstance().addSmeltingRecipe(result.itemId, ingredients);
     }
 
     /**
      * Highly not recommended, still W.I.P.
-     * Try using other methods, like automatic texturing from CLA.
+     * Try using other methods, like automatic texturing from CLAPI.
      * @param blockBase BlockBase instance.
      * @param s Texture path.
      * @return -1
      */
     @Deprecated
     @Override
-    public int onBlockTextureInit(BlockBase blockBase, String s) {
+    public int initBlockTexture(BlockBase blockBase, String s) {
         Model model = new FullCubeModel(s);
         ModelRegistry.addTileModel(blockBase, model);
         ModelRegistry.addItemModel(ItemBase.byId[blockBase.id], model);
@@ -84,7 +84,7 @@ public class CursedLegacyAPI implements APIInterface {
     }
 
     @Override
-    public int onItemTextureInit(ItemBase itemBase, String s) {
+    public int initItemTexture(ItemBase itemBase, String s) {
         return AtlasMap.registerSprite(itemBase.id, 0, s);
     }
 }

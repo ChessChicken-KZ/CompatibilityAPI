@@ -55,9 +55,9 @@ public class RecipeManipulation {
     public void overwriteAllRecipes(ItemInstance currentItem, boolean shaped, Object... objects) {
         removeAllRecipes(currentItem);
         if(shaped)
-            CompatibilityAPI.GET_API().onShapedRecipeInit(currentItem, objects);
+            CompatibilityAPI.getAPI().initShapedRecipe(currentItem, objects);
         else
-            CompatibilityAPI.GET_API().onShapelessRecipeInit(currentItem, objects);
+            CompatibilityAPI.getAPI().initShapelessRecipe(currentItem, objects);
     }
 
     /**

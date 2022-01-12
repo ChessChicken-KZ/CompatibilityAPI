@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "kz.chesschicken.compatibility.cla.mixin",
+  "package": "kz.chesschicken.compatibility.clapi.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
   ],

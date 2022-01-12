@@ -10,7 +10,7 @@ import java.util.function.IntFunction;
 public class EventItem extends Event {
 
     public ItemBase register(InstanceIdentifier identifier, IntFunction<ItemBase> instance) {
-        return CompatibilityAPI.GET_API().onItemInit(identifier, instance);
+        return CompatibilityAPI.getAPI().initItem(identifier, instance);
     }
 
     @Override

@@ -1,7 +1,7 @@
-package kz.chesschicken.compatibility.cla;
+package kz.chesschicken.compatibility.clapi;
 
 import kz.chesschicken.compatibility.CompatibilityAPI;
-import kz.chesschicken.compatibility.cla.utils.CursedLegacyApiUtils;
+import kz.chesschicken.compatibility.clapi.utils.CursedLegacyApiUtils;
 import kz.chesschicken.compatibility.event.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;

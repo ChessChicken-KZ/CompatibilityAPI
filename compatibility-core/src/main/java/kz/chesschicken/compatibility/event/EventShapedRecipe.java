@@ -7,7 +7,7 @@ import net.minecraft.item.ItemInstance;
 public class EventShapedRecipe extends Event {
 
     public void register(ItemInstance result, Object[] ingredients) {
-        CompatibilityAPI.GET_API().onShapedRecipeInit(result, ingredients);
+        CompatibilityAPI.getAPI().initShapedRecipe(result, ingredients);
     }
 
     @Override

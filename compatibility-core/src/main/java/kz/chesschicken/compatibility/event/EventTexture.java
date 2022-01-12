@@ -8,11 +8,11 @@ import net.minecraft.item.ItemBase;
 public class EventTexture extends Event {
 
     public int addBlockTexture(BlockBase instance, String s) {
-        return CompatibilityAPI.GET_API().onBlockTextureInit(instance, s);
+        return CompatibilityAPI.getAPI().initBlockTexture(instance, s);
     }
 
     public int addItemTexture(ItemBase instance, String s) {
-        return CompatibilityAPI.GET_API().onItemTextureInit(instance, s);
+        return CompatibilityAPI.getAPI().initItemTexture(instance, s);
     }
 
     @Override

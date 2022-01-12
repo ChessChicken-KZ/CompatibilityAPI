@@ -9,17 +9,17 @@ import java.util.function.IntFunction;
 public interface APIInterface {
     String getID();
 
-    BlockBase onBlockInit(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase);
+    BlockBase initBlock(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase);
 
-    ItemBase onItemInit(InstanceIdentifier identifier, IntFunction<ItemBase> itemBase);
+    ItemBase initItem(InstanceIdentifier identifier, IntFunction<ItemBase> itemBase);
 
-    void onShapedRecipeInit(ItemInstance result, Object[] ingredients);
+    void initShapedRecipe(ItemInstance result, Object[] ingredients);
 
-    void onShapelessRecipeInit(ItemInstance result, Object[] ingredients);
+    void initShapelessRecipe(ItemInstance result, Object[] ingredients);
 
-    void onSmeltingRecipeInit(ItemInstance result, ItemInstance ingredients);
+    void initSmeltingRecipe(ItemInstance result, ItemInstance ingredients);
 
-    int onBlockTextureInit(BlockBase blockBase, String s);
+    int initBlockTexture(BlockBase blockBase, String s);
 
-    int onItemTextureInit(ItemBase itemBase, String s);
+    int initItemTexture(ItemBase itemBase, String s);
 }

@@ -22,7 +22,7 @@ public class StationAPI implements APIInterface {
     }
 
     @Override
-    public BlockBase onBlockInit(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase) {
+    public BlockBase initBlock(InstanceIdentifier identifier, IntFunction<BlockBase> blockBase) {
         BlockBase q = blockBase.apply(BlockRegistry.INSTANCE.getNextSerialID());
 
         //Injecting annotations.
@@ -33,36 +33,36 @@ public class StationAPI implements APIInterface {
     }
 
     @Override
-    public ItemBase onItemInit(InstanceIdentifier identifier, IntFunction<ItemBase> itemBase) {
+    public ItemBase initItem(InstanceIdentifier identifier, IntFunction<ItemBase> itemBase) {
         ItemBase q = itemBase.apply(ItemRegistry.INSTANCE.getNextSerialID());
         ItemRegistry.INSTANCE.register(StationApiUtils.from(identifier), q);
         return q;
     }
 
     @Override
-    public void onShapedRecipeInit(ItemInstance result, Object[] ingredients) {
+    public void initShapedRecipe(ItemInstance result, Object[] ingredients) {
         CraftingRegistry.addShapedRecipe(result, ingredients);
     }
 
     @Override
-    public void onShapelessRecipeInit(ItemInstance result, Object[] ingredients) {
+    public void initShapelessRecipe(ItemInstance result, Object[] ingredients) {
         CraftingRegistry.addShapelessRecipe(result, ingredients);
     }
 
     @Override
-    public void onSmeltingRecipeInit(ItemInstance result, ItemInstance ingredients) {
+    public void initSmeltingRecipe(ItemInstance result, ItemInstance ingredients) {
         SmeltingRegistry.addSmeltingRecipe(result, ingredients);
     }
 
     @Override
-    public int onBlockTextureInit(BlockBase blockBase, String s) {
+    public int initBlockTexture(BlockBase blockBase, String s) {
         int i = Atlases.getStationTerrain().addTexture(s).index;
         blockBase.texture = i;
         return i;
     }
 
     @Override
-    public int onItemTextureInit(ItemBase itemBase, String s) {
+    public int initItemTexture(ItemBase itemBase, String s) {
         int i = Atlases.getStationGuiItems().addTexture(s).index;
         itemBase.setTexturePosition(i);
         return i;
