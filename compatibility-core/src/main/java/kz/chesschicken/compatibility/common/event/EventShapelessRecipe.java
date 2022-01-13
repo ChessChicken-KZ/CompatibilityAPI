@@ -1,4 +1,4 @@
-package kz.chesschicken.compatibility.event;
+package kz.chesschicken.compatibility.common.event;
 
 import kz.chesschicken.compatibility.CompatibilityAPI;
 import net.mine_diver.unsafeevents.Event;

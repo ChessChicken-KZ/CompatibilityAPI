@@ -1,4 +1,4 @@
-package kz.chesschicken.compatibility.api;
+package kz.chesschicken.compatibility.common;
 
 import net.fabricmc.loader.api.ModContainer;
 
@@ -19,6 +19,19 @@ public class InstanceIdentifier {
 
     public String getObjectName() {
         return this.object;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass())
+            return false;
+        InstanceIdentifier that = (InstanceIdentifier) o;
+        return mod.equals(that.mod) && object.equals(that.object);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mod, object);
     }
 
     public static InstanceIdentifier create(String s, String s1) {
@@ -43,18 +56,5 @@ public class InstanceIdentifier {
 
     public static InstanceIdentifier create(ModContainer modContainer, String s) {
         return new InstanceIdentifier(modContainer.getMetadata().getId(), s);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass())
-            return false;
-        InstanceIdentifier that = (InstanceIdentifier) o;
-        return mod.equals(that.mod) && object.equals(that.object);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(mod, object);
     }
 }

@@ -1,7 +1,8 @@
 package kz.chesschicken.compatibility;
 
 import kz.chesschicken.compatibility.api.APIInterface;
-import kz.chesschicken.compatibility.event.EventPreInit;
+import kz.chesschicken.compatibility.api.code.EventASMHandler;
+import kz.chesschicken.compatibility.common.event.EventPreInit;
 import lombok.Getter;
 import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.Event;
@@ -18,12 +19,11 @@ public class CompatibilityAPI {
     public static final Logger LOGGER = LogManager.getLogger("CompatibilityAPI");
 
     @Getter private static APIInterface API = null;
-    @Getter private static EventBus EventBus;
+    @Getter private static final EventBus EventBus = new EventBus();
 
     public static void init(APIInterface apiInterface) {
         CompatibilityAPI.LOGGER.info("Using {} as an providing interface API.", apiInterface.getID());
         API = apiInterface;
-        EventBus = new EventBus();
         searchAndSetupMods();
     }
 
@@ -34,6 +34,8 @@ public class CompatibilityAPI {
             registerModEvents(oec.getEntrypoint());
         });
 
+        CompatibilityAPI.getEventBus().post(new EventASMHandler());
+        EventASMHandler.init();
         EventBus.post(new EventPreInit());
     }
 

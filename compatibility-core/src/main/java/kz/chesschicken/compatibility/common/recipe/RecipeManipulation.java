@@ -1,4 +1,4 @@
-package kz.chesschicken.compatibility.api.recipe;
+package kz.chesschicken.compatibility.common.recipe;
 
 import kz.chesschicken.compatibility.CompatibilityAPI;
 import net.minecraft.block.BlockBase;

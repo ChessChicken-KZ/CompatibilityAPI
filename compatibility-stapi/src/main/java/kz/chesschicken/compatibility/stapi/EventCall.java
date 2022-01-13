@@ -1,7 +1,7 @@
 package kz.chesschicken.compatibility.stapi;
 
 import kz.chesschicken.compatibility.CompatibilityAPI;
-import kz.chesschicken.compatibility.event.*;
+import kz.chesschicken.compatibility.common.event.*;
 import kz.chesschicken.compatibility.stapi.api.StationAPI;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;

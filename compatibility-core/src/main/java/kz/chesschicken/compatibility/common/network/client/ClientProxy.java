@@ -1,11 +1,14 @@
-package kz.chesschicken.compatibility.api.network.client;
+package kz.chesschicken.compatibility.common.network.client;
 
-import kz.chesschicken.compatibility.api.network.INetworkProxy;
+import kz.chesschicken.compatibility.common.network.INetworkProxy;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.packet.AbstractPacket;
 
+@Environment(EnvType.CLIENT)
 public class ClientProxy implements INetworkProxy {
     @Override
     public void queuePacket(PlayerBase playerBase, AbstractPacket packet) {

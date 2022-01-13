@@ -1,6 +1,6 @@
 package kz.chesschicken.compatibility.stapi.mixin.api;
 
-import kz.chesschicken.compatibility.api.item.BlockMetaNamed;
+import kz.chesschicken.compatibility.common.item.BlockMetaNamed;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlas;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import net.modificationstation.stationapi.api.client.texture.atlas.CustomAtlasProvider;

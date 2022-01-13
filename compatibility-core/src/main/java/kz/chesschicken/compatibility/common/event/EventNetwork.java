@@ -1,10 +1,10 @@
-package kz.chesschicken.compatibility.event;
+package kz.chesschicken.compatibility.common.event;
 
-import kz.chesschicken.compatibility.api.InstanceIdentifier;
-import kz.chesschicken.compatibility.api.network.INetworkProxy;
-import kz.chesschicken.compatibility.api.network.PacketDeclaration;
-import kz.chesschicken.compatibility.api.network.client.ClientProxy;
-import kz.chesschicken.compatibility.api.network.server.ServerProxy;
+import kz.chesschicken.compatibility.common.InstanceIdentifier;
+import kz.chesschicken.compatibility.common.network.INetworkProxy;
+import kz.chesschicken.compatibility.common.network.PacketDeclaration;
+import kz.chesschicken.compatibility.common.network.client.ClientProxy;
+import kz.chesschicken.compatibility.common.network.server.ServerProxy;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.mine_diver.unsafeevents.Event;

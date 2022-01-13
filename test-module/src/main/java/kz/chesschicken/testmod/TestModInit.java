@@ -1,9 +1,9 @@
 package kz.chesschicken.testmod;
 
-import kz.chesschicken.compatibility.api.InstanceIdentifier;
-import kz.chesschicken.compatibility.event.EventBlock;
-import kz.chesschicken.compatibility.event.EventShapelessRecipe;
-import kz.chesschicken.compatibility.event.EventTexture;
+import kz.chesschicken.compatibility.common.InstanceIdentifier;
+import kz.chesschicken.compatibility.common.event.EventBlock;
+import kz.chesschicken.compatibility.common.event.EventShapelessRecipe;
+import kz.chesschicken.compatibility.common.event.EventTexture;
 import kz.chesschicken.testmod.block.BlockExample;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.BlockBase;

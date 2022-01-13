@@ -1,8 +1,8 @@
 package kz.chesschicken.compatibility.stapi.utils;
 
-import kz.chesschicken.compatibility.api.InstanceIdentifier;
-import kz.chesschicken.compatibility.utils.block.UseCustomTileItem;
-import kz.chesschicken.compatibility.utils.block.UseMetaNamedTileItem;
+import kz.chesschicken.compatibility.common.InstanceIdentifier;
+import kz.chesschicken.compatibility.common.block.UseCustomTileItem;
+import kz.chesschicken.compatibility.common.block.UseMetaNamedTileItem;
 import kz.chesschicken.compatibility.utils.cursedjava.AnnotationReflects;
 import kz.chesschicken.compatibility.utils.cursedjava.InitAndApply;
 import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;

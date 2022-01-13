@@ -4,6 +4,7 @@
   "package": "kz.chesschicken.compatibility.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "MixinMinecraft"
   ],
   "server": [
   ],

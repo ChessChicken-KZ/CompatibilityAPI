@@ -22,6 +22,7 @@
     "preLaunch": [
     ],
     "compatibility_mod": [
+      "kz.chesschicken.compatibility.utils.api.EventASMImpl"
     ]
   },
   "mixins": [

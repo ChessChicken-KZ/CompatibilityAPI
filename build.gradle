@@ -106,6 +106,8 @@ allprojects {
 		implementation "com.github.jhalterman:typetools:87240d6"
 		implementation "com.github.mineLdiver:UnsafeEvents:7efec57"
 
+		modImplementation 'com.github.Chocohead:Fabric-ASM:39abe596bc'
+
 		testmodCompileClasspath(project(':compatibility-core'))
 	}
 

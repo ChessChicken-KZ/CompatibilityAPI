@@ -1,13 +1,13 @@
-package kz.chesschicken.compatibility.event;
+package kz.chesschicken.compatibility.common.event;
 
 import kz.chesschicken.compatibility.CompatibilityAPI;
 import net.mine_diver.unsafeevents.Event;
 import net.minecraft.item.ItemInstance;
 
-public class EventSmeltingRecipe extends Event {
+public class EventShapedRecipe extends Event {
 
-    public void register(ItemInstance result, ItemInstance ingredients) {
-        CompatibilityAPI.getAPI().initSmeltingRecipe(result, ingredients);
+    public void register(ItemInstance result, Object[] ingredients) {
+        CompatibilityAPI.getAPI().initShapedRecipe(result, ingredients);
     }
 
     @Override

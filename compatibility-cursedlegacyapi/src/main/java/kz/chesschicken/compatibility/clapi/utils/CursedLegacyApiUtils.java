@@ -3,7 +3,7 @@ package kz.chesschicken.compatibility.clapi.utils;
 import io.github.minecraftcursedlegacy.accessor.translations.AccessorTranslationStorage;
 import io.github.minecraftcursedlegacy.api.registry.Id;
 import kz.chesschicken.compatibility.CompatibilityAPI;
-import kz.chesschicken.compatibility.api.InstanceIdentifier;
+import kz.chesschicken.compatibility.common.InstanceIdentifier;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.resource.language.TranslationStorage;
 

@@ -1,7 +1,7 @@
 package kz.chesschicken.compatibility.stapi.api;
 
 import kz.chesschicken.compatibility.api.APIInterface;
-import kz.chesschicken.compatibility.api.InstanceIdentifier;
+import kz.chesschicken.compatibility.common.InstanceIdentifier;
 import kz.chesschicken.compatibility.stapi.utils.StationApiUtils;
 import net.minecraft.block.BlockBase;
 import net.minecraft.item.ItemBase;

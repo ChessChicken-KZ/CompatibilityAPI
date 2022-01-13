@@ -1,5 +1,6 @@
 package kz.chesschicken.compatibility.api;
 
+import kz.chesschicken.compatibility.common.InstanceIdentifier;
 import net.minecraft.block.BlockBase;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;

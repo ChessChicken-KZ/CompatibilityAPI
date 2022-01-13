@@ -1,7 +1,7 @@
-package kz.chesschicken.compatibility.api.network;
+package kz.chesschicken.compatibility.common.network;
 
-import kz.chesschicken.compatibility.api.InstanceIdentifier;
-import kz.chesschicken.compatibility.event.EventNetwork;
+import kz.chesschicken.compatibility.common.InstanceIdentifier;
+import kz.chesschicken.compatibility.common.event.EventNetwork;
 import lombok.SneakyThrows;
 import net.minecraft.network.PacketHandler;
 import net.minecraft.packet.AbstractPacket;
