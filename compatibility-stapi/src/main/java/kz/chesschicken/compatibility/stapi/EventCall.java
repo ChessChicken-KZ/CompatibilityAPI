@@ -14,9 +14,10 @@ import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.event.registry.MessageListenerRegistryEvent;
 import net.modificationstation.stationapi.api.registry.Identifier;
 
+import java.util.Objects;
+
 public class EventCall {
 
-    //Fuck me till I can't walk.
     @SuppressWarnings("unused")
     @EventListener
     public void initAPI(PreInitEvent event) {
@@ -39,13 +40,13 @@ public class EventCall {
     @EventListener
     public void registerRecipes(RecipeRegisterEvent event) {
         Identifier type = event.recipeId;
-        if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type())
+        if (Objects.equals(type, RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type()))
             CompatibilityAPI.getEventBus().post(new EventShapedRecipe());
 
-        if (type == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type())
+        if (Objects.equals(type, RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS.type()))
             CompatibilityAPI.getEventBus().post(new EventShapelessRecipe());
 
-        if (type == RecipeRegisterEvent.Vanilla.SMELTING.type())
+        if (Objects.equals(type, RecipeRegisterEvent.Vanilla.SMELTING.type()))
             CompatibilityAPI.getEventBus().post(new EventSmeltingRecipe());
     }
 
