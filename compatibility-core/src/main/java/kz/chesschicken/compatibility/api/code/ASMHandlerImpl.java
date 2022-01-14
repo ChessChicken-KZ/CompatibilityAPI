@@ -2,13 +2,8 @@ package kz.chesschicken.compatibility.api.code;
 
 import kz.chesschicken.compatibility.utils.cursedjava.TDBArray;
 import net.fabricmc.loader.api.FabricLoader;
-import org.objectweb.asm.ClassVisitor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ASMHandlerImpl {
-    public static List<Class<? extends ClassVisitor>> classVisitorList = new ArrayList<>();
     static TDBArray classNames = new TDBArray();
     static TDBArray methodNames = new TDBArray();
     static TDBArray fieldNames = new TDBArray();

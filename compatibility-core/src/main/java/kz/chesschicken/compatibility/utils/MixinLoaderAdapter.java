@@ -7,6 +7,9 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 import java.util.List;
 import java.util.Set;
 
+/*
+ * TODO: Use this config plugin somehow.
+ */
 public class MixinLoaderAdapter implements IMixinConfigPlugin {
     @Override
     public void onLoad(String mixinPackage) {

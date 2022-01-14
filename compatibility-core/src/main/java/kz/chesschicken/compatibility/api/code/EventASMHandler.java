@@ -9,11 +9,15 @@ import org.objectweb.asm.ClassVisitor;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * The first to be called event in the game(?).
  */
 public class EventASMHandler extends Event {
+
+    public static List<Class<? extends ClassVisitor>> classVisitorList = new ArrayList<>();
 
     @Override
     protected int getEventID() {
@@ -21,12 +25,12 @@ public class EventASMHandler extends Event {
     }
 
     public void register(Class<? extends ClassVisitor> clazz) {
-        ASMHandlerImpl.classVisitorList.add(clazz);
+        classVisitorList.add(clazz);
     }
 
     public static void init() {
-        for(Class<? extends ClassVisitor> c : ASMHandlerImpl.classVisitorList) {
-            apply$REQUIRE_CLASSVISITORACCEPTOR(c);
+        for(Class<? extends ClassVisitor> c : classVisitorList) {
+            applyClassVisitor(c);
         }
     }
 
@@ -38,7 +42,7 @@ public class EventASMHandler extends Event {
         return FabricLoader.getInstance().isDevelopmentEnvironment() ? acceptor.targetClassDeobf() : acceptor.targetClassMapped();
     }
 
-    static void apply$REQUIRE_CLASSVISITORACCEPTOR(Class<? extends ClassVisitor> instanceVisitor) {
+    static void applyClassVisitor(Class<? extends ClassVisitor> instanceVisitor) {
         if(!instanceVisitor.isAnnotationPresent(ClassVisitorAcceptor.class))
             throw new RuntimeException("Found registered ClassVisitor without " + ClassVisitorAcceptor.class.getCanonicalName());
         ClassVisitorAcceptor annotation = instanceVisitor.getAnnotation(ClassVisitorAcceptor.class);

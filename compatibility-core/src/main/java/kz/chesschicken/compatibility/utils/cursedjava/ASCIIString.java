@@ -7,8 +7,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 /**
- * Great alternative to String object, optimizing a lot of memory.
+ * Great alternative to String object, optimizing a lot of memory.<p>
  * Well, at least it saves some memory thought, a bit.
+ *
+ * @author ChessChicken-KZ
  */
 public class ASCIIString {
     byte[] values;

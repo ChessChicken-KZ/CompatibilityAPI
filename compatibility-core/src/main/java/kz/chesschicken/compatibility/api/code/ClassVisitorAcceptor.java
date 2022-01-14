@@ -2,13 +2,17 @@ package kz.chesschicken.compatibility.api.code;
 
 import org.objectweb.asm.Opcodes;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
+/**
+ * Special annotation for a class type, that is going to be accepted by {@link EventASMHandler#register(Class)}.<p>
+ * Must be implemented, or else expect {@link RuntimeException}.
+ *
+ * @author ChessChicken-KZ
+ */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
+@Documented
 public @interface ClassVisitorAcceptor {
     String targetClassDeobf();
 
