@@ -1,7 +1,7 @@
 package kz.chesschicken.compatibility;
 
 import kz.chesschicken.compatibility.api.APIInterface;
-import kz.chesschicken.compatibility.api.code.EventASMHandler;
+import kz.chesschicken.compatibility.api.code.EventASMTransformer;
 import kz.chesschicken.compatibility.common.event.EventPreInit;
 import lombok.Getter;
 import net.fabricmc.loader.api.FabricLoader;
@@ -34,8 +34,8 @@ public class CompatibilityAPI {
             registerModEvents(oec.getEntrypoint());
         });
 
-        CompatibilityAPI.getEventBus().post(new EventASMHandler());
-        EventASMHandler.init();
+        CompatibilityAPI.getEventBus().post(new EventASMTransformer());
+        EventASMTransformer.init();
         EventBus.post(new EventPreInit());
     }
 

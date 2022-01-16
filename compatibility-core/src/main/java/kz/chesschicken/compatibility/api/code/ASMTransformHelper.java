@@ -3,7 +3,7 @@ package kz.chesschicken.compatibility.api.code;
 import kz.chesschicken.compatibility.utils.cursedjava.TDBArray;
 import net.fabricmc.loader.api.FabricLoader;
 
-public class ASMHandlerImpl {
+public class ASMTransformHelper {
     static TDBArray classNames = new TDBArray();
     static TDBArray methodNames = new TDBArray();
     static TDBArray fieldNames = new TDBArray();

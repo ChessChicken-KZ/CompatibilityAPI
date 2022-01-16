@@ -5,7 +5,7 @@ import org.objectweb.asm.Opcodes;
 import java.lang.annotation.*;
 
 /**
- * Special annotation for a class type, that is going to be accepted by {@link EventASMHandler#register(Class)}.<p>
+ * Special annotation for a class type, that is going to be accepted by {@link EventASMTransformer#register(Class)}.<p>
  * Must be implemented, or else expect {@link RuntimeException}.
  *
  * @author ChessChicken-KZ

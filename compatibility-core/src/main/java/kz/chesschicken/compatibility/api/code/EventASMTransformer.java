@@ -15,7 +15,7 @@ import java.util.List;
 /*
  * The first to be called event in the game(?).
  */
-public class EventASMHandler extends Event {
+public class EventASMTransformer extends Event {
 
     public static List<Class<? extends ClassVisitor>> classVisitorList = new ArrayList<>();
 
@@ -35,7 +35,7 @@ public class EventASMHandler extends Event {
     }
 
     static String getTargetClass(ClassVisitorAcceptor acceptor) {
-        ASMHandlerImpl.className(
+        ASMTransformHelper.className(
                 acceptor.targetClassDeobf().getBytes(StandardCharsets.US_ASCII),
                 acceptor.targetClassMapped().getBytes(StandardCharsets.US_ASCII)
         );
