@@ -1,6 +1,7 @@
 package kz.chesschicken.compatibility;
 
 import kz.chesschicken.compatibility.api.APIInterface;
+import kz.chesschicken.compatibility.api.code.ASMTransformHelper;
 import kz.chesschicken.compatibility.api.code.EventASMTransformer;
 import kz.chesschicken.compatibility.common.event.EventPreInit;
 import lombok.Getter;
@@ -22,7 +23,9 @@ public class CompatibilityAPI {
     @Getter private static final EventBus EventBus = new EventBus();
 
     public static void init(APIInterface apiInterface) {
-        CompatibilityAPI.LOGGER.info("Using {} as an providing interface API.", apiInterface.getID());
+        if(API != null)
+            return;
+        LOGGER.info("Using {} as an providing interface API.", apiInterface.getID());
         API = apiInterface;
         searchAndSetupMods();
     }
@@ -34,8 +37,8 @@ public class CompatibilityAPI {
             registerModEvents(oec.getEntrypoint());
         });
 
-        CompatibilityAPI.getEventBus().post(new EventASMTransformer());
-        EventASMTransformer.init();
+        EventBus.post(new EventASMTransformer());
+        ASMTransformHelper.init();
         EventBus.post(new EventPreInit());
     }
 
